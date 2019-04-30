@@ -1,0 +1,27 @@
+<html>
+	
+	<head>
+	<link rel="stylesheet" type="text/css" href="index_style.css">	
+	</head>
+
+	<body>
+		<div style="text-align: center;">
+		<h1> Saving Method </h1>
+		</div>
+		<br>
+
+		<div id="general">
+			<div style="text-align: left;">
+    	<button style="position: absolute;top: 80%;">Button1</button>
+		</div>
+		<div style="text-align: right;">
+    	<button style="position: absolute;top: 80%;">Button2</button>
+
+		</div>
+		
+		</div>
+
+	</body>
+
+
+</html>
