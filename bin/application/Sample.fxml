@@ -1,7 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-	
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<BorderPane prefHeight="769.0" prefWidth="1304.0" xmlns="http://javafx.com/javafx/8.0.191" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="120.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <HBox layoutX="-21.0" layoutY="-2.0" prefHeight="96.0" prefWidth="158.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <HBox layoutX="-21.0" layoutY="-2.0" prefHeight="96.0" prefWidth="158.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </bottom>
+   <center>
+      <AnchorPane prefHeight="561.0" prefWidth="1130.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="662.0" fitWidth="1322.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/mapaMundi.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointAlberta" fitHeight="19.0" fitWidth="19.0" layoutX="194.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointBloemfontein" fitHeight="14.0" fitWidth="13.0" layoutX="703.0" layoutY="599.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointPretoria" fitHeight="19.0" fitWidth="12.0" layoutX="716.0" layoutY="587.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointCiudadaDelCabo" fitHeight="15.0" fitWidth="13.0" layoutX="682.0" layoutY="616.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointArgel" fitHeight="17.0" fitWidth="16.0" layoutX="624.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointUlanBator" fitHeight="16.0" fitWidth="16.0" layoutX="1000.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointAstana" fitHeight="18.0" fitWidth="16.0" layoutX="879.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointBuenosAires" fitHeight="16.0" fitWidth="19.0" layoutX="393.0" layoutY="622.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointRiad" fitHeight="14.0" fitWidth="13.0" layoutX="782.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointTeheran" fitHeight="18.0" fitWidth="15.0" layoutX="802.0" layoutY="350.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointNewDelhi" fitHeight="19.0" fitWidth="13.0" layoutX="895.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointCamberra" fitHeight="20.0" fitWidth="18.0" layoutX="1149.0" layoutY="621.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointCiudadDeMexico" fitHeight="21.0" fitWidth="15.0" layoutX="257.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointHongKong" fitHeight="18.0" fitWidth="17.0" layoutX="1023.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointPekin" fitHeight="20.0" fitWidth="16.0" layoutX="1026.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointKrasnoyarsk" fitHeight="16.0" fitWidth="19.0" layoutX="949.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointMoscu" fitHeight="17.0" fitWidth="17.0" layoutX="765.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointRio" fitHeight="16.0" fitWidth="18.0" layoutX="460.0" layoutY="563.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointBrasilia" fitHeight="18.0" fitWidth="20.0" layoutX="427.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointWashington" fitHeight="18.0" fitWidth="17.0" layoutX="171.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointOttawa" fitHeight="18.0" fitWidth="18.0" layoutX="329.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointBogota" fitHeight="19.0" fitWidth="12.0" layoutX="347.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pointKinsasa" fitHeight="19.0" fitWidth="12.0" layoutX="676.0" layoutY="508.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombPoint.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
