@@ -51,9 +51,7 @@ public class WarControl {
 		
 		for(int i=0; i<bPoints.length; i++) {
 			graph.addVertex(bPoints[0]);
-			
 		}
-		
 		//Washington
 		graph.addEdge(bPoints[0], bPoints[1], false, 328, 0);
 		graph.addEdge(bPoints[0], bPoints[2], false, 3027, 0);
