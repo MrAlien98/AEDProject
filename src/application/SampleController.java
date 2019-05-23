@@ -38,7 +38,7 @@ public class SampleController {
 		Tooltip.install(pointWashington, new Tooltip("Washington, EE.UU"));
 		Tooltip.install(pointCiudadDeMexico, new Tooltip("Ciudad de México, México"));
 		Tooltip.install(pointBrasilia, new Tooltip("Brasilia, Brasil"));
-		Tooltip.install(pointRio, new Tooltip("Rio de Janeior, Brasil"));
+		Tooltip.install(pointRio, new Tooltip("Rio de Janeiro, Brasil"));
 		Tooltip.install(pointBuenosAires, new Tooltip("Buenos Aires, Argentina"));
 		Tooltip.install(pointMoscu, new Tooltip("Moscú, Rusia"));
 		Tooltip.install(pointAstana, new Tooltip("Astana, Kazajstan"));
