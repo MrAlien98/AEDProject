@@ -25,6 +25,5 @@ public class Main extends Application {
 		launch(args);
 	}
 }
-//this is an example
-//this is another example
+
 

@@ -2,9 +2,13 @@ package application;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class SampleController {
+	
+	@FXML public final Image START_BOMBING=new Image("images/startBombingPoint.png");
+	@FXML public final Image END_BOMBING=new Image("images/endBombingPoint.png");
 	
 	@FXML private ImageView imgMapa;
  	@FXML private ImageView pointBogota;
@@ -31,16 +35,24 @@ public class SampleController {
     @FXML private ImageView pointPretoria;
     @FXML private ImageView pointKinsasa;
 	
-	public void initialize() {
-		Tooltip.install(pointBogota, new Tooltip("Bogotá, Colombia"));
+    private boolean bomber1;
+    private boolean bomber2;
+    
+    public SampleController() {
+    	bomber1=false;
+    	bomber2=false;
+    }
+
+	public void initialize() {	
+		Tooltip.install(pointBogota, new Tooltip("Bogota, Colombia"));
 		Tooltip.install(pointAlberta, new Tooltip("Alberta, Canada"));
 		Tooltip.install(pointOttawa, new Tooltip("Ottawa, Canada"));
 		Tooltip.install(pointWashington, new Tooltip("Washington, EE.UU"));
-		Tooltip.install(pointCiudadDeMexico, new Tooltip("Ciudad de México, México"));
+		Tooltip.install(pointCiudadDeMexico, new Tooltip("Ciudad de Mexico, Mexico"));
 		Tooltip.install(pointBrasilia, new Tooltip("Brasilia, Brasil"));
 		Tooltip.install(pointRio, new Tooltip("Rio de Janeiro, Brasil"));
 		Tooltip.install(pointBuenosAires, new Tooltip("Buenos Aires, Argentina"));
-		Tooltip.install(pointMoscu, new Tooltip("Moscú, Rusia"));
+		Tooltip.install(pointMoscu, new Tooltip("Moscu, Rusia"));
 		Tooltip.install(pointAstana, new Tooltip("Astana, Kazajstan"));
 		Tooltip.install(pointKrasnoyarsk, new Tooltip("Krasnoyarsk, Rusia"));
 		Tooltip.install(pointUlanBator, new Tooltip("Ulan Bator, Mongolia"));
@@ -51,10 +63,62 @@ public class SampleController {
 		Tooltip.install(pointRiad, new Tooltip("Riad, Arabia Saudita"));
 		Tooltip.install(pointArgel, new Tooltip("Argel, Argelia"));
 		Tooltip.install(pointCamberra, new Tooltip("Camberra, Australia"));
-		Tooltip.install(pointCiudadaDelCabo, new Tooltip("Ciudad del Cabo, Sudáfrica"));
-		Tooltip.install(pointBloemfontein, new Tooltip("Bloemfontein, Sudáfrica"));
-		Tooltip.install(pointPretoria, new Tooltip("Pretoria, Sudáfrica"));
-		Tooltip.install(pointKinsasa, new Tooltip("Kinsasa, Republica Democrática del Congo"));
+		Tooltip.install(pointCiudadaDelCabo, new Tooltip("Ciudad del Cabo, Sudafrica"));
+		Tooltip.install(pointBloemfontein, new Tooltip("Bloemfontein, Sudafrica"));
+		Tooltip.install(pointPretoria, new Tooltip("Pretoria, Sudafrica"));
+		Tooltip.install(pointKinsasa, new Tooltip("Kinsasa, Republica Democratica del Congo"));
+		
+		pointBogota.setOnMouseClicked(e-> changeImages(pointBogota));
+		pointAlberta.setOnMouseClicked(e-> changeImages(pointAlberta));
+		pointOttawa.setOnMouseClicked(e-> changeImages(pointOttawa));
+		pointWashington.setOnMouseClicked(e-> changeImages(pointWashington));
+		pointCiudadDeMexico.setOnMouseClicked(e-> changeImages(pointCiudadDeMexico));
+		pointBrasilia.setOnMouseClicked(e-> changeImages(pointBrasilia));
+		pointRio.setOnMouseClicked(e-> changeImages(pointRio));
+		pointBuenosAires.setOnMouseClicked(e-> changeImages(pointBuenosAires));
+		pointMoscu.setOnMouseClicked(e-> changeImages(pointMoscu));
+		pointAstana.setOnMouseClicked(e-> changeImages(pointAstana));
+		pointKrasnoyarsk.setOnMouseClicked(e-> changeImages(pointKrasnoyarsk));
+		pointUlanBator.setOnMouseClicked(e-> changeImages(pointUlanBator));
+		pointPekin.setOnMouseClicked(e-> changeImages(pointPekin));
+		pointHongKong.setOnMouseClicked(e-> changeImages(pointHongKong));
+		pointNewDelhi.setOnMouseClicked(e-> changeImages(pointNewDelhi));
+		pointTeheran.setOnMouseClicked(e-> changeImages(pointTeheran));
+		pointBogota.setOnMouseClicked(e-> changeImages(pointBogota));
+		pointBogota.setOnMouseClicked(e-> changeImages(pointBogota));
+	}
+	
+	public void changeImages(ImageView img) {
+		if(bomber1 && bomber2) {
+			
+		}else if(bomber1) {
+			bomber2=true;
+			img.setImage(END_BOMBING);
+		}else {
+			img.setOnMouseClicked(e->nothingMethod());
+			bomber1=true;
+			img.setImage(START_BOMBING);
+		}
+	}
+	
+	public void nothingMethod() {
+		
+	}
+	
+	public boolean isBomber1() {
+		return bomber1;
+	}
+
+	public void setBomber1(boolean bomber1) {
+		this.bomber1 = bomber1;
+	}
+
+	public boolean isBomber2() {
+		return bomber2;
+	}
+
+	public void setBomber2(boolean bomber2) {
+		this.bomber2 = bomber2;
 	}
 	
 }
