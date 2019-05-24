@@ -1,104 +1,185 @@
 package application;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.shape.Line;
+import javafx.util.Pair;
 
 public class SampleController {
 	
 	@FXML public final Image START_BOMBING=new Image("images/startBombingPoint.png");
 	@FXML public final Image END_BOMBING=new Image("images/endBombingPoint.png");
+	@FXML public final Image NORMAL_POINT=new Image("images/bombPoint.png");
 	
 	@FXML private ImageView imgMapa;
- 	@FXML private ImageView pointBogota;
-    @FXML private ImageView pointAlberta;
-    @FXML private ImageView pointOttawa;
-    @FXML private ImageView pointWashington;
-    @FXML private ImageView pointCiudadDeMexico;
-    @FXML private ImageView pointBrasilia;
-    @FXML private ImageView pointRio;
-    @FXML private ImageView pointBuenosAires;
-    @FXML private ImageView pointMoscu;
-    @FXML private ImageView pointAstana;
-    @FXML private ImageView pointKrasnoyarsk;
-    @FXML private ImageView pointUlanBator;
-    @FXML private ImageView pointPekin;
-    @FXML private ImageView pointHongKong;
-    @FXML private ImageView pointNewDelhi;
-    @FXML private ImageView pointTeheran;
-    @FXML private ImageView pointRiad;
-    @FXML private ImageView pointArgel;
-    @FXML private ImageView pointCamberra;
-    @FXML private ImageView pointCiudadaDelCabo;
-    @FXML private ImageView pointBloemfontein;
-    @FXML private ImageView pointPretoria;
-    @FXML private ImageView pointKinsasa;
+ 	@FXML private ImageView  Bogota;
+ 	@FXML private ImageView  Kansas;
+    @FXML private ImageView  Alberta;
+    @FXML private ImageView  Ottawa;
+    @FXML private ImageView  Washington;
+    @FXML private ImageView  CiudadDeMexico;
+    @FXML private ImageView  Brasilia;
+    @FXML private ImageView  Rio;
+    @FXML private ImageView  BuenosAires;
+    @FXML private ImageView  Moscu;
+    @FXML private ImageView  Astana;
+    @FXML private ImageView  Krasnoyarsk;
+    @FXML private ImageView  UlanBator;
+    @FXML private ImageView  Pekin;
+    @FXML private ImageView  HongKong;
+    @FXML private ImageView  NewDelhi;
+    @FXML private ImageView  Teheran;
+    @FXML private ImageView  Riad;
+    @FXML private ImageView  Argel;
+    @FXML private ImageView  Camberra;
+    @FXML private ImageView  CiudadaDelCabo;
+    @FXML private ImageView  Bloemfontein;
+    @FXML private ImageView  Pretoria;
+    @FXML private ImageView  Kinsasa;
 	
+    @FXML private Button butClear;
+    
+    private ArrayList<Pair<ImageView, Boolean>> imgs;
+    	
     private boolean bomber1;
     private boolean bomber2;
     
     public SampleController() {
+    	imgs=new ArrayList<>();
+    	imgs.add(new Pair<ImageView, Boolean>(Bogota, false));
+    	imgs.add(new Pair<ImageView, Boolean>(Kansas,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Alberta,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Ottawa,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Washington,false));
+    	imgs.add(new Pair<ImageView, Boolean>(CiudadDeMexico,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Brasilia,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Rio,false));
+    	imgs.add(new Pair<ImageView, Boolean>(BuenosAires,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Moscu,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Astana,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Krasnoyarsk,false));
+    	imgs.add(new Pair<ImageView, Boolean>(UlanBator,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Pekin,false));
+    	imgs.add(new Pair<ImageView, Boolean>(HongKong,false));
+    	imgs.add(new Pair<ImageView, Boolean>(NewDelhi,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Teheran,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Riad,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Argel,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Camberra,false));
+    	imgs.add(new Pair<ImageView, Boolean>(CiudadaDelCabo,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Bloemfontein,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Pretoria,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Kinsasa,false));
+    	
     	bomber1=false;
     	bomber2=false;
     }
 
-	public void initialize() {	
-		Tooltip.install(pointBogota, new Tooltip("Bogota, Colombia"));
-		Tooltip.install(pointAlberta, new Tooltip("Alberta, Canada"));
-		Tooltip.install(pointOttawa, new Tooltip("Ottawa, Canada"));
-		Tooltip.install(pointWashington, new Tooltip("Washington, EE.UU"));
-		Tooltip.install(pointCiudadDeMexico, new Tooltip("Ciudad de Mexico, Mexico"));
-		Tooltip.install(pointBrasilia, new Tooltip("Brasilia, Brasil"));
-		Tooltip.install(pointRio, new Tooltip("Rio de Janeiro, Brasil"));
-		Tooltip.install(pointBuenosAires, new Tooltip("Buenos Aires, Argentina"));
-		Tooltip.install(pointMoscu, new Tooltip("Moscu, Rusia"));
-		Tooltip.install(pointAstana, new Tooltip("Astana, Kazajstan"));
-		Tooltip.install(pointKrasnoyarsk, new Tooltip("Krasnoyarsk, Rusia"));
-		Tooltip.install(pointUlanBator, new Tooltip("Ulan Bator, Mongolia"));
-		Tooltip.install(pointPekin, new Tooltip("Pekin, China"));
-		Tooltip.install(pointHongKong, new Tooltip("HongKong, China"));
-		Tooltip.install(pointNewDelhi, new Tooltip("NewDelhi, India"));
-		Tooltip.install(pointTeheran, new Tooltip("Teheran, Iran"));
-		Tooltip.install(pointRiad, new Tooltip("Riad, Arabia Saudita"));
-		Tooltip.install(pointArgel, new Tooltip("Argel, Argelia"));
-		Tooltip.install(pointCamberra, new Tooltip("Camberra, Australia"));
-		Tooltip.install(pointCiudadaDelCabo, new Tooltip("Ciudad del Cabo, Sudafrica"));
-		Tooltip.install(pointBloemfontein, new Tooltip("Bloemfontein, Sudafrica"));
-		Tooltip.install(pointPretoria, new Tooltip("Pretoria, Sudafrica"));
-		Tooltip.install(pointKinsasa, new Tooltip("Kinsasa, Republica Democratica del Congo"));
+	public void initialize() {			
+		Tooltip.install( Bogota, new Tooltip("Bogota, Colombia"));
+		Tooltip.install( Alberta, new Tooltip("Alberta, Canada"));
+		Tooltip.install( Ottawa, new Tooltip("Ottawa, Canada"));
+		Tooltip.install( Washington, new Tooltip("Washington, EE.UU"));
+		Tooltip.install( CiudadDeMexico, new Tooltip("Ciudad de Mexico, Mexico"));
+		Tooltip.install( Brasilia, new Tooltip("Brasilia, Brasil"));
+		Tooltip.install( Rio, new Tooltip("Rio de Janeiro, Brasil"));
+		Tooltip.install( BuenosAires, new Tooltip("Buenos Aires, Argentina"));
+		Tooltip.install( Moscu, new Tooltip("Moscu, Rusia"));
+		Tooltip.install( Astana, new Tooltip("Astana, Kazajstan"));
+		Tooltip.install( Krasnoyarsk, new Tooltip("Krasnoyarsk, Rusia"));
+		Tooltip.install( UlanBator, new Tooltip("Ulan Bator, Mongolia"));
+		Tooltip.install( Pekin, new Tooltip("Pekin, China"));
+		Tooltip.install( HongKong, new Tooltip("HongKong, China"));
+		Tooltip.install( NewDelhi, new Tooltip("NewDelhi, India"));
+		Tooltip.install( Teheran, new Tooltip("Teheran, Iran"));
+		Tooltip.install( Riad, new Tooltip("Riad, Arabia Saudita"));
+		Tooltip.install( Argel, new Tooltip("Argel, Argelia"));
+		Tooltip.install( Camberra, new Tooltip("Camberra, Australia"));
+		Tooltip.install( CiudadaDelCabo, new Tooltip("Ciudad del Cabo, Sudafrica"));
+		Tooltip.install( Bloemfontein, new Tooltip("Bloemfontein, Sudafrica"));
+		Tooltip.install( Pretoria, new Tooltip("Pretoria, Sudafrica"));
+		Tooltip.install( Kinsasa, new Tooltip("Kinsasa, Republica Democratica del Congo"));
+		Tooltip.install( Kansas, new Tooltip("Kansas, EE.UU"));
+		actions();
+	}
+	
+	public void actions() {
+		butClear.setOnAction(e->{
+			actions();
+			bomber1=false;
+			bomber2=false;
+		});
 		
-		pointBogota.setOnMouseClicked(e-> changeImages(pointBogota));
-		pointAlberta.setOnMouseClicked(e-> changeImages(pointAlberta));
-		pointOttawa.setOnMouseClicked(e-> changeImages(pointOttawa));
-		pointWashington.setOnMouseClicked(e-> changeImages(pointWashington));
-		pointCiudadDeMexico.setOnMouseClicked(e-> changeImages(pointCiudadDeMexico));
-		pointBrasilia.setOnMouseClicked(e-> changeImages(pointBrasilia));
-		pointRio.setOnMouseClicked(e-> changeImages(pointRio));
-		pointBuenosAires.setOnMouseClicked(e-> changeImages(pointBuenosAires));
-		pointMoscu.setOnMouseClicked(e-> changeImages(pointMoscu));
-		pointAstana.setOnMouseClicked(e-> changeImages(pointAstana));
-		pointKrasnoyarsk.setOnMouseClicked(e-> changeImages(pointKrasnoyarsk));
-		pointUlanBator.setOnMouseClicked(e-> changeImages(pointUlanBator));
-		pointPekin.setOnMouseClicked(e-> changeImages(pointPekin));
-		pointHongKong.setOnMouseClicked(e-> changeImages(pointHongKong));
-		pointNewDelhi.setOnMouseClicked(e-> changeImages(pointNewDelhi));
-		pointTeheran.setOnMouseClicked(e-> changeImages(pointTeheran));
-		pointBogota.setOnMouseClicked(e-> changeImages(pointBogota));
-		pointBogota.setOnMouseClicked(e-> changeImages(pointBogota));
+		 Bogota.setOnMouseClicked(e-> changeImages( Bogota));
+		 Alberta.setOnMouseClicked(e-> changeImages( Alberta));
+		 Ottawa.setOnMouseClicked(e-> changeImages( Ottawa));
+		 Washington.setOnMouseClicked(e-> changeImages( Washington));
+		 CiudadDeMexico.setOnMouseClicked(e-> changeImages( CiudadDeMexico));
+		 Brasilia.setOnMouseClicked(e-> changeImages( Brasilia));
+		 Rio.setOnMouseClicked(e-> changeImages( Rio));
+		 BuenosAires.setOnMouseClicked(e-> changeImages( BuenosAires));
+		 Moscu.setOnMouseClicked(e-> changeImages( Moscu));
+		 Astana.setOnMouseClicked(e-> changeImages( Astana));
+		 Krasnoyarsk.setOnMouseClicked(e-> changeImages( Krasnoyarsk));
+		 UlanBator.setOnMouseClicked(e-> changeImages( UlanBator));
+		 Pekin.setOnMouseClicked(e-> changeImages( Pekin));
+		 HongKong.setOnMouseClicked(e-> changeImages( HongKong));
+		 NewDelhi.setOnMouseClicked(e-> changeImages( NewDelhi));
+		 Teheran.setOnMouseClicked(e-> changeImages( Teheran));
+		 Riad.setOnMouseClicked(e-> changeImages( Riad));
+		 Argel.setOnMouseClicked(e-> changeImages( Argel));
+		 Camberra.setOnMouseClicked(e-> changeImages( Camberra));
+		 CiudadaDelCabo.setOnMouseClicked(e-> changeImages( CiudadaDelCabo));
+		 Bloemfontein.setOnMouseClicked(e-> changeImages( Bloemfontein));
+		 Pretoria.setOnMouseClicked(e-> changeImages(Pretoria));
+		 Kinsasa.setOnMouseClicked(e-> changeImages( Kinsasa));
+		 Kansas.setOnMouseClicked(e-> changeImages( Kansas));
 	}
 	
 	public void changeImages(ImageView img) {
+		System.out.println(img.getId());
 		if(bomber1 && bomber2) {
-			
+			System.out.println("Solo 2 puntos");
 		}else if(bomber1) {
 			bomber2=true;
 			img.setImage(END_BOMBING);
+			for(int i=0;i<imgs.size();i++) {
+				if(imgs.get(i).getKey().getId().equalsIgnoreCase(img.getId())) {
+					imgs.set(i, new Pair<ImageView, Boolean>(img, true));
+				}
+			}
+			pintala();
 		}else {
+			for(int i=0;i<imgs.size();i++) {
+				if(imgs.get(i).getKey().getId().equalsIgnoreCase(img.getId())) {
+					imgs.set(i, new Pair<ImageView, Boolean>(img, true));
+				}
+			}
 			img.setOnMouseClicked(e->nothingMethod());
 			bomber1=true;
 			img.setImage(START_BOMBING);
 		}
+	}
+	
+	public void pintala() {
+		ImageView point1=null;
+		ImageView point2=null;
+		for(int i=0;i<imgs.size();i++) {
+			if(imgs.get(i).getValue()==true) {
+				if(point1==null) {
+					point1=imgs.get(i).getKey();
+				}else if(point2==null) {
+					point2=imgs.get(i).getKey();
+				}
+			}
+		}
+		Line linea=new Line(point1.getLayoutX(), point1.getLayoutY(), point2.getLayoutX(), point2.getLayoutY());
+		Main.getRoot().getChildren().add(linea);
 	}
 	
 	public void nothingMethod() {
