@@ -562,5 +562,64 @@ public class WarControl {
 	}
 
 
+	public BombingPoint[] getbPoints() {
+		return bPoints;
+	}
+
+
+	public void setbPoints(BombingPoint[] bPoints) {
+		this.bPoints = bPoints;
+	}
+
+
+	public GraphByLists<BombingPoint, Integer> getGraph() {
+		return graph;
+	}
+
+
+	public void setGraph(GraphByLists<BombingPoint, Integer> graph) {
+		this.graph = graph;
+	}
+
+	public ArrayList<Vertex<BombingPoint>> getPath(Vertex<BombingPoint> start, Vertex<BombingPoint> end){
+		
+		MethodsGraphs<BombingPoint, Integer> meth= new MethodsGraphs<>();
+		
+		ArrayList<Vertex<BombingPoint>> path= meth.dijkstra(graph, start).creatingPath(start, end);
+		
+		return path;
+	}
+
+	public String pathToString(Vertex<BombingPoint> start, Vertex<BombingPoint> end) {
+		
+		MethodsGraphs<BombingPoint,Integer> meth= new MethodsGraphs<>();
+		
+		ArrayList<Vertex<BombingPoint>> path = meth.dijkstra(graph, start).creatingPath(start, end);
+		
+		String pathS="";
+		
+		for (int i = 0; i < path.size(); i++) {
+			
+			Vertex<BombingPoint> a= path.get(i);
+			Vertex<BombingPoint> b= path.get(i +1);
+			
+			pathS +=a.toString() + " -- " + graph.edgesBetween(a.getValue(), b.getValue()) + " --> " + b.toString() + "\n" ;
+			
+			
+		}
+		 
+		return pathS;
+	}
+
+	public int[] gethPathKruskal() {
+		
+		MethodsGraphs<BombingPoint, Integer> meth= new MethodsGraphs<>();
+		
+		ArrayList<Vertex<BombingPoint>> path= new ArrayList<>();
+		
+		int[] pathIndex= meth.primP(graph, new Vertex<>(bPoints[0])).getPath();
+//		int[] pathIndex= meth.kruskal(graph);
+		return pathIndex;
+	}
 
 }
