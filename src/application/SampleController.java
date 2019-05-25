@@ -7,8 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.util.Pair;
 
 public class SampleController {
 	
@@ -49,33 +49,10 @@ public class SampleController {
     private boolean bomber1;
     private boolean bomber2;
     
+    private Line stroke;
+    
     public SampleController() {
-    	imgs=new ArrayList<>();
-    	imgs.add(new Pair<ImageView, Boolean>(Bogota, false));
-    	imgs.add(new Pair<ImageView, Boolean>(Kansas,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Alberta,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Ottawa,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Washington,false));
-    	imgs.add(new Pair<ImageView, Boolean>(CiudadDeMexico,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Brasilia,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Rio,false));
-    	imgs.add(new Pair<ImageView, Boolean>(BuenosAires,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Moscu,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Astana,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Krasnoyarsk,false));
-    	imgs.add(new Pair<ImageView, Boolean>(UlanBator,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Pekin,false));
-    	imgs.add(new Pair<ImageView, Boolean>(HongKong,false));
-    	imgs.add(new Pair<ImageView, Boolean>(NewDelhi,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Teheran,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Riad,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Argel,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Camberra,false));
-    	imgs.add(new Pair<ImageView, Boolean>(CiudadaDelCabo,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Bloemfontein,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Pretoria,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Kinsasa,false));
-    	
+    	stroke=new Line();
     	bomber1=false;
     	bomber2=false;
     }
@@ -105,59 +82,68 @@ public class SampleController {
 		Tooltip.install( Pretoria, new Tooltip("Pretoria, Sudafrica"));
 		Tooltip.install( Kinsasa, new Tooltip("Kinsasa, Republica Democratica del Congo"));
 		Tooltip.install( Kansas, new Tooltip("Kansas, EE.UU"));
+		
+		imgs=new ArrayList<>();
+    	imgs.add(new Pair<ImageView, Boolean>(Bogota, false));
+    	imgs.add(new Pair<ImageView, Boolean>(Kansas,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Alberta,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Ottawa,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Washington,false));
+    	imgs.add(new Pair<ImageView, Boolean>(CiudadDeMexico,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Brasilia,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Rio,false));
+    	imgs.add(new Pair<ImageView, Boolean>(BuenosAires,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Moscu,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Astana,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Krasnoyarsk,false));
+    	imgs.add(new Pair<ImageView, Boolean>(UlanBator,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Pekin,false));
+    	imgs.add(new Pair<ImageView, Boolean>(HongKong,false));
+    	imgs.add(new Pair<ImageView, Boolean>(NewDelhi,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Teheran,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Riad,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Argel,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Camberra,false));
+    	imgs.add(new Pair<ImageView, Boolean>(CiudadaDelCabo,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Bloemfontein,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Pretoria,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Kinsasa,false));
+    	
 		actions();
 	}
 	
 	public void actions() {
 		butClear.setOnAction(e->{
 			actions();
+			Main.getRoot().getChildren().remove(stroke);
 			bomber1=false;
 			bomber2=false;
 		});
-		
-		 Bogota.setOnMouseClicked(e-> changeImages( Bogota));
-		 Alberta.setOnMouseClicked(e-> changeImages( Alberta));
-		 Ottawa.setOnMouseClicked(e-> changeImages( Ottawa));
-		 Washington.setOnMouseClicked(e-> changeImages( Washington));
-		 CiudadDeMexico.setOnMouseClicked(e-> changeImages( CiudadDeMexico));
-		 Brasilia.setOnMouseClicked(e-> changeImages( Brasilia));
-		 Rio.setOnMouseClicked(e-> changeImages( Rio));
-		 BuenosAires.setOnMouseClicked(e-> changeImages( BuenosAires));
-		 Moscu.setOnMouseClicked(e-> changeImages( Moscu));
-		 Astana.setOnMouseClicked(e-> changeImages( Astana));
-		 Krasnoyarsk.setOnMouseClicked(e-> changeImages( Krasnoyarsk));
-		 UlanBator.setOnMouseClicked(e-> changeImages( UlanBator));
-		 Pekin.setOnMouseClicked(e-> changeImages( Pekin));
-		 HongKong.setOnMouseClicked(e-> changeImages( HongKong));
-		 NewDelhi.setOnMouseClicked(e-> changeImages( NewDelhi));
-		 Teheran.setOnMouseClicked(e-> changeImages( Teheran));
-		 Riad.setOnMouseClicked(e-> changeImages( Riad));
-		 Argel.setOnMouseClicked(e-> changeImages( Argel));
-		 Camberra.setOnMouseClicked(e-> changeImages( Camberra));
-		 CiudadaDelCabo.setOnMouseClicked(e-> changeImages( CiudadaDelCabo));
-		 Bloemfontein.setOnMouseClicked(e-> changeImages( Bloemfontein));
-		 Pretoria.setOnMouseClicked(e-> changeImages(Pretoria));
-		 Kinsasa.setOnMouseClicked(e-> changeImages( Kinsasa));
-		 Kansas.setOnMouseClicked(e-> changeImages( Kansas));
+		for(int i=0;i<imgs.size();i++) {
+			final int n=i;
+			imgs.get(i).getKey().setImage(NORMAL_POINT);
+			imgs.get(i).setValue(false);
+			imgs.get(i).getKey().setOnMouseClicked(e-> changeImages(imgs.get(n).getKey()));
+		}
 	}
 	
 	public void changeImages(ImageView img) {
-		System.out.println(img.getId());
 		if(bomber1 && bomber2) {
 			System.out.println("Solo 2 puntos");
 		}else if(bomber1) {
 			bomber2=true;
-			img.setImage(END_BOMBING);
 			for(int i=0;i<imgs.size();i++) {
 				if(imgs.get(i).getKey().getId().equalsIgnoreCase(img.getId())) {
-					imgs.set(i, new Pair<ImageView, Boolean>(img, true));
+					imgs.get(i).getKey().setImage(END_BOMBING);
+					imgs.get(i).setValue(true);
 				}
 			}
-			pintala();
+			drawPath();
 		}else {
 			for(int i=0;i<imgs.size();i++) {
 				if(imgs.get(i).getKey().getId().equalsIgnoreCase(img.getId())) {
-					imgs.set(i, new Pair<ImageView, Boolean>(img, true));
+					imgs.get(i).getKey().setImage(START_BOMBING);
+					imgs.get(i).setValue(true);
 				}
 			}
 			img.setOnMouseClicked(e->nothingMethod());
@@ -166,7 +152,7 @@ public class SampleController {
 		}
 	}
 	
-	public void pintala() {
+	public void drawPath() {
 		ImageView point1=null;
 		ImageView point2=null;
 		for(int i=0;i<imgs.size();i++) {
@@ -178,8 +164,10 @@ public class SampleController {
 				}
 			}
 		}
-		Line linea=new Line(point1.getLayoutX(), point1.getLayoutY(), point2.getLayoutX(), point2.getLayoutY());
-		Main.getRoot().getChildren().add(linea);
+		stroke.setStartX(point1.getLayoutX());	stroke.setStartY(point1.getLayoutY());
+		stroke.setEndX(point2.getLayoutX());	stroke.setEndY(point2.getLayoutY());
+		stroke.setFill(Color.DARKGREY);
+		Main.getRoot().getChildren().add(stroke);
 	}
 	
 	public void nothingMethod() {
