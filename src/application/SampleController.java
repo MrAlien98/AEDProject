@@ -169,6 +169,9 @@ public class SampleController {
 		BombingPoint start=Main.getWar().findBombingPoint(point1.getId());
 		BombingPoint end=Main.getWar().findBombingPoint(point2.getId());
 		ArrayList<Vertex<BombingPoint>> b=Main.getWar().getPath(new Vertex<BombingPoint>(start), new Vertex<BombingPoint>(end));
+		for(Vertex<BombingPoint> a : b) {
+			System.out.println(a.getValue().getName());
+		}
 		drawPath(b);
 //		stroke.setStartX(point1.getLayoutX());	stroke.setStartY(point1.getLayoutY());
 //		stroke.setEndX(point2.getLayoutX());	stroke.setEndY(point2.getLayoutY());
@@ -179,8 +182,8 @@ public class SampleController {
 	public void drawPath(ArrayList<Vertex<BombingPoint>> arr) {
 		ArrayList<ImageView> marked=new ArrayList<>();
 		for(int i=0;i<arr.size();i++) {
-			for(int j=1;j<imgs.size();j++) {
-				if(imgs.get(i).getKey().getId().equalsIgnoreCase(arr.get(j).getValue().getName())) {
+			for(int j=0;j<imgs.size();j++) {
+				if(imgs.get(j).getKey().getId().equalsIgnoreCase(arr.get(i).getValue().getName())) {
 					marked.add(imgs.get(j).getKey());
 				}
 			}
