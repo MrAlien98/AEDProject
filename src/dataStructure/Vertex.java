@@ -24,7 +24,6 @@ public class Vertex<T extends Comparable<T>> implements Comparable<Vertex<T>> {
 	 * @param value The value of the vertex.
 	 */
 	public Vertex(T value) {
-
 		this.value = value;
 		edges = new ArrayList<>();
 

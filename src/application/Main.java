@@ -5,11 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.WarControl;
 
 
 public class Main extends Application {
 	
 	public static BorderPane root = new BorderPane();
+	public static WarControl war = new WarControl();
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -26,6 +28,10 @@ public class Main extends Application {
 	
 	public static BorderPane getRoot() {
 		return root;
+	}
+	
+	public static WarControl getWar() {
+		return war;
 	}
 	
 	public static void main(String[] args) {

@@ -16,35 +16,36 @@ public class WarControl {
 	public WarControl() {
 		bPoints= new BombingPoint[BOMBPOINTS];
 		graph= new GraphByLists<>(BOMBPOINTS);
+		fillingArrayMethod();
 	}
 
 
 	public void fillingArrayMethod() {
 		bPoints[0]= new BombingPoint("Washington",0,0);
-		bPoints[1]= new BombingPoint("New York",0,0);
-		bPoints[2]= new BombingPoint("Ciudad de Mexico",0,0);
+		bPoints[1]= new BombingPoint("Kansas",0,0);
+		bPoints[2]= new BombingPoint("CiudaddeMexico",0,0);
 		bPoints[3]= new BombingPoint("Brasilia",0,0);
-		bPoints[4]= new BombingPoint("Rio de Janeiro",0,0);
+		bPoints[4]= new BombingPoint("RiodeJaneiro",0,0);
 		bPoints[5]= new BombingPoint("Moscu",0,0);
 		bPoints[6]= new BombingPoint("Krasnoyarsk",0,0);
 		bPoints[7]= new BombingPoint("Pekin",0,0);
 		bPoints[8]= new BombingPoint("Hong Kong",0,0);
 		bPoints[9]= new BombingPoint("Canberra",0,0);
-		bPoints[10]= new BombingPoint("Nueva Delhi",0,0);
+		bPoints[10]= new BombingPoint("NuevaDelhi",0,0);
 		bPoints[11]= new BombingPoint("Teheran",0,0);
 		bPoints[12]= new BombingPoint("Riad",0,0);
-		bPoints[13]= new BombingPoint("Buenos Aires",0,0);
+		bPoints[13]= new BombingPoint("BuenosAires",0,0);
 		bPoints[14]= new BombingPoint("Astana",0,0);
-		bPoints[15]= new BombingPoint("Ulan Bator",0,0);
+		bPoints[15]= new BombingPoint("UlanBator",0,0);
 		bPoints[16]= new BombingPoint("Argel",0,0);
-		bPoints[17]= new BombingPoint("ciudad del Cabo",0,0);
+		bPoints[17]= new BombingPoint("ciudaddelCabo",0,0);
 		bPoints[18]= new BombingPoint("Bogota",0,0);
 		bPoints[19]= new BombingPoint("Kinshasa",0,0);
 		bPoints[20]= new BombingPoint("Ottawa",0,0);
 		bPoints[21]= new BombingPoint("Alberta",0,0);
 		
 	
-		
+		fillingGraphMethod();
 	}
 	
 	public void fillingGraphMethod() {
@@ -75,7 +76,7 @@ public class WarControl {
 		graph.addEdge(bPoints[0], bPoints[20], false, 732, 0);
 		graph.addEdge(bPoints[0], bPoints[21], false, 569, 0);
 		
-		//Nueva York
+		//Kansas
 		graph.addEdge(bPoints[1], bPoints[0], false, 328, 0);
 		graph.addEdge(bPoints[1], bPoints[2], false, 3500, 0);
 		graph.addEdge(bPoints[1], bPoints[3], false, 7100, 0);
@@ -620,6 +621,16 @@ public class WarControl {
 		int[] pathIndex= meth.primP(graph, new Vertex<>(bPoints[0])).getPath();
 //		int[] pathIndex= meth.kruskal(graph);
 		return pathIndex;
+	}
+	
+	public BombingPoint findBombingPoint(String id) {
+		System.out.println(id);
+		for(int i=0;i<bPoints.length;i++) {
+			if(bPoints[i].getName().equalsIgnoreCase(id)){
+				return bPoints[i];
+			}
+		}
+		return null;
 	}
 
 }

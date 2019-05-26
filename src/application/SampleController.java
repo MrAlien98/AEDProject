@@ -2,6 +2,7 @@ package application;
 
 import java.util.ArrayList;
 
+import dataStructure.Vertex;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -9,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import model.BombingPoint;
 
 public class SampleController {
 	
@@ -164,13 +166,37 @@ public class SampleController {
 				}
 			}
 		}
-		stroke.setStartX(point1.getLayoutX());	stroke.setStartY(point1.getLayoutY());
-		stroke.setEndX(point2.getLayoutX());	stroke.setEndY(point2.getLayoutY());
-		stroke.setFill(Color.DARKGREY);
-		Main.getRoot().getChildren().add(stroke);
+		BombingPoint start=Main.getWar().findBombingPoint(point1.getId());
+		BombingPoint end=Main.getWar().findBombingPoint(point2.getId());
+		ArrayList<Vertex<BombingPoint>> b=Main.getWar().getPath(new Vertex<BombingPoint>(start), new Vertex<BombingPoint>(end));
+		drawPath(b);
+//		stroke.setStartX(point1.getLayoutX());	stroke.setStartY(point1.getLayoutY());
+//		stroke.setEndX(point2.getLayoutX());	stroke.setEndY(point2.getLayoutY());
+//		stroke.setFill(Color.DARKGREY);
+//		Main.getRoot().getChildren().add(stroke);
+	}
+	
+	public void drawPath(ArrayList<Vertex<BombingPoint>> arr) {
+		ArrayList<ImageView> marked=new ArrayList<>();
+		for(int i=0;i<arr.size();i++) {
+			for(int j=1;j<imgs.size();j++) {
+				if(imgs.get(i).getKey().getId().equalsIgnoreCase(arr.get(j).getValue().getName())) {
+					marked.add(imgs.get(j).getKey());
+				}
+			}
+		}
+		for(int i=1;i<marked.size();i++) {
+			stroke.setStartX(marked.get(i-1).getLayoutX());	stroke.setStartY(marked.get(i-1).getLayoutY());
+			stroke.setEndX(marked.get(i).getLayoutX());	stroke.setEndY(marked.get(i).getLayoutY());
+			Main.getRoot().getChildren().add(stroke);
+		}
 	}
 	
 	public void nothingMethod() {
+		
+	}
+	
+	public void moveAirPlane() {
 		
 	}
 	
