@@ -3,6 +3,8 @@ package application;
 import java.util.ArrayList;
 
 import dataStructure.Vertex;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
@@ -10,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.util.Duration;
 import model.BombingPoint;
 
 public class SampleController {
@@ -18,6 +21,11 @@ public class SampleController {
 	@FXML public final Image END_BOMBING=new Image("images/endBombingPoint.png");
 	@FXML public final Image NORMAL_POINT=new Image("images/bombPoint.png");
 	@FXML public final Image BOMBED_POINT=new Image("images/bombedPoint.png");
+	@FXML public final Image PLANE_1=new Image("images/plane1.png");
+	@FXML public final Image PLANE_2=new Image("images/plane2.png");
+	@FXML public final Image PLANE_3=new Image("images/plane3.png");
+	@FXML public final Image PLANE_4=new Image("images/plane4.png");
+	
 	
 	@FXML private ImageView imgMapa;
  	@FXML private ImageView  Bogota;
@@ -27,7 +35,7 @@ public class SampleController {
     @FXML private ImageView  Washington;
     @FXML private ImageView  CiudadDeMexico;
     @FXML private ImageView  Brasilia;
-    @FXML private ImageView  Rio;
+    @FXML private ImageView  RiodeJaneiro;
     @FXML private ImageView  BuenosAires;
     @FXML private ImageView  Moscu;
     @FXML private ImageView  Astana;
@@ -52,23 +60,31 @@ public class SampleController {
     @FXML private Button startBombing;
     
     private ArrayList<Pair<ImageView, Boolean>> imgs;
-    	
+    private ArrayList<ImageView> marked=new ArrayList<>();	
+    
+    private Timeline animation;
+    
     private boolean bomber1;
     private boolean bomber2;
         
+    private double dx;
+    private double dy;
+    
     public SampleController() {
     	bomber1=false;
     	bomber2=false;
     }
 
-	public void initialize() {			
+	public void initialize() {	
+		airPlane.setVisible(false);
+		
 		Tooltip.install( Bogota, new Tooltip("Bogota, Colombia"));
 		Tooltip.install( Alberta, new Tooltip("Alberta, Canada"));
 		Tooltip.install( Ottawa, new Tooltip("Ottawa, Canada"));
 		Tooltip.install( Washington, new Tooltip("Washington, EE.UU"));
 		Tooltip.install( CiudadDeMexico, new Tooltip("Ciudad de Mexico, Mexico"));
 		Tooltip.install( Brasilia, new Tooltip("Brasilia, Brasil"));
-		Tooltip.install( Rio, new Tooltip("Rio de Janeiro, Brasil"));
+		Tooltip.install( RiodeJaneiro, new Tooltip("Rio de Janeiro, Brasil"));
 		Tooltip.install( BuenosAires, new Tooltip("Buenos Aires, Argentina"));
 		Tooltip.install( Moscu, new Tooltip("Moscu, Rusia"));
 		Tooltip.install( Astana, new Tooltip("Astana, Kazajstan"));
@@ -88,14 +104,14 @@ public class SampleController {
 		Tooltip.install( Kansas, new Tooltip("Kansas, EE.UU"));
 		
 		imgs=new ArrayList<>();
+		imgs.add(new Pair<ImageView, Boolean>(Washington,false));
+		imgs.add(new Pair<ImageView, Boolean>(Kansas,false));
+		imgs.add(new Pair<ImageView, Boolean>(CiudadDeMexico,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Brasilia,false));
+    	imgs.add(new Pair<ImageView, Boolean>(RiodeJaneiro,false));
     	imgs.add(new Pair<ImageView, Boolean>(Bogota, false));
-    	imgs.add(new Pair<ImageView, Boolean>(Kansas,false));
     	imgs.add(new Pair<ImageView, Boolean>(Alberta,false));
     	imgs.add(new Pair<ImageView, Boolean>(Ottawa,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Washington,false));
-    	imgs.add(new Pair<ImageView, Boolean>(CiudadDeMexico,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Brasilia,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Rio,false));
     	imgs.add(new Pair<ImageView, Boolean>(BuenosAires,false));
     	imgs.add(new Pair<ImageView, Boolean>(Moscu,false));
     	imgs.add(new Pair<ImageView, Boolean>(Astana,false));
@@ -123,6 +139,7 @@ public class SampleController {
 			bomber1=false;
 			bomber2=false;
 		});
+		startBombing.setOnAction(e-> moveAirPlane(marked));
 		for(int i=0;i<imgs.size();i++) {
 			final int n=i;
 			imgs.get(i).getKey().setImage(NORMAL_POINT);
@@ -178,7 +195,6 @@ public class SampleController {
 	}
 	
 	public void drawPath(ArrayList<Vertex<BombingPoint>> arr) {
-		ArrayList<ImageView> marked=new ArrayList<>();
 		for(int i=0;i<arr.size();i++) {
 			for(int j=0;j<imgs.size();j++) {
 				if(imgs.get(j).getKey().getId().equalsIgnoreCase(arr.get(i).getValue().getName())) {
@@ -204,8 +220,49 @@ public class SampleController {
 		
 	}
 	
-	public void moveAirPlane() {
-		
+	public double MCD(double dx, double dy) {
+		double res=0;
+		do{
+			res=dy;
+			dy=dx%dy;
+			dx=res;
+		}while(dy!=0);
+		return res;
+	}
+	
+	public void moveAirPlane(ArrayList<ImageView> marked) {
+		airPlane.setVisible(true);
+		airPlane.setLayoutX(marked.get(marked.size()-1).getLayoutX());
+		airPlane.setLayoutY(marked.get(marked.size()-1).getLayoutY());
+		for(int i=1;i<marked.size();i++) {
+			ImageView imgP1=marked.get(i-1);
+			ImageView imgP2=marked.get(i);
+			dx=(imgP2.getLayoutX()-imgP1.getLayoutX());
+			dy=(imgP2.getLayoutY()-imgP1.getLayoutY());
+			double change=MCD(dx,dy);
+			dx=dx/change;
+			dy=dy/change;
+			animation = new Timeline(new KeyFrame(Duration.millis(3000), f-> {
+				System.out.println("entro");
+				if(airPlane.getLayoutX()<imgP2.getLayoutX()) {
+					airPlane.setLayoutX(airPlane.getLayoutX()+dx);
+				}
+				if(airPlane.getLayoutX()>imgP2.getLayoutX()) {
+					airPlane.setLayoutX(airPlane.getLayoutX()-dx);
+				}
+				if(airPlane.getLayoutY()>imgP2.getLayoutY()) {
+					airPlane.setLayoutY(airPlane.getLayoutY()+dy);
+				}
+				if(airPlane.getLayoutY()<imgP2.getLayoutY()) {
+					airPlane.setLayoutY(airPlane.getLayoutY()-dy);
+				}
+				if(airPlane.getLayoutY()==imgP2.getLayoutY() && airPlane.getLayoutX()==imgP2.getLayoutX()) {
+					animation.pause();
+				}
+			}));
+			animation.setCycleCount(Timeline.INDEFINITE);
+			animation.play();
+		}
 	}
 	
 	public boolean isBomber1() {
