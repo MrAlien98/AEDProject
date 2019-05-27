@@ -140,6 +140,7 @@ public class SampleController {
 			bomber2=false;
 		});
 		startBombing.setOnAction(e-> moveAirPlane(marked));
+		bombEverything.setOnAction(e-> bombEverything());
 		for(int i=0;i<imgs.size();i++) {
 			final int n=i;
 			imgs.get(i).getKey().setImage(NORMAL_POINT);
@@ -188,11 +189,8 @@ public class SampleController {
 			}
 		}
 		BombingPoint start=Main.getWar().findBombingPoint(point1.getId());
-		System.out.println("-----"+start.getName()+"-----");
 		BombingPoint end=Main.getWar().findBombingPoint(point2.getId());
-		System.out.println("-----"+end.getName()+"-----");
 		ArrayList<Vertex<BombingPoint>> b=Main.getWar().getPath(new Vertex<BombingPoint>(start), new Vertex<BombingPoint>(end));
-		System.out.println(Main.getWar().pathToString(new Vertex<BombingPoint>(start), new Vertex<BombingPoint>(end)));
 		drawPath(b);
 	}
 	
@@ -220,7 +218,20 @@ public class SampleController {
 	
 	public void bombEverything() {
 		int[] ax=Main.getWar().gethPathPrim();
-		
+		for(int a : ax) {
+			System.out.println(a);
+		}
+		ArrayList<ImageView> path=new ArrayList<>();
+		for(int i=0;i<ax.length;i++) {
+			path.add(imgs.get(ax[i]).getKey());
+		}
+		for(int i=1;i<path.size();i++) {
+			Line line=new Line();
+			line.setStyle("-fx-stroke-dash-array: 2 12 12 2;");
+			line.setStartX(path.get(i-1).getLayoutX());	line.setStartY(path.get(i-1).getLayoutY());
+			line.setEndX(path.get(i).getLayoutX());	line.setEndY(path.get(i).getLayoutY());
+			Main.getRoot().getChildren().add(line);
+		}
 	}
 	
 	public double MCD(double dx, double dy) {
@@ -234,26 +245,40 @@ public class SampleController {
 	}
 	
 	public void moveAirPlane(ArrayList<ImageView> marked) {
-//		airPlane.setVisible(true);
-//		airPlane.setLayoutX(marked.get(0).getLayoutX());
-//		airPlane.setLayoutY(marked.get(0).getLayoutY());
-//		for(int i=1;i<marked.size();i++) {
-//			ImageView imgP1=marked.get(i-1);
-//			ImageView imgP2=marked.get(i);
-//			System.out.println("de "+imgP1.getId()+" a "+imgP2.getId());
-//			dx=(imgP2.getLayoutX()-imgP1.getLayoutX());
-//			dy=(imgP2.getLayoutY()-imgP1.getLayoutY());
-//			double change=MCD(dx,dy);
-//			dx=dx/change;
-//			dy=dy/change;
-//			animation = new Timeline(new KeyFrame(Duration.millis(1000), f-> {
-////				if() {
-////					
-////				}
-//			}));
-//			animation.setCycleCount(Timeline.INDEFINITE);
-//			animation.play();
-//		}
+		for(int i=1;i<marked.size();i++) {
+			System.out.println(marked.get(i-1).getId());
+			ImageView imgP1=marked.get(i-1);
+			ImageView imgP2=marked.get(i);
+			airPlane.setLayoutX(imgP1.getLayoutX());
+			airPlane.setLayoutY(imgP1.getLayoutY());
+			airPlane.setVisible(true);
+			System.out.println("de "+imgP1.getId()+" a "+imgP2.getId());
+			dx=(imgP2.getLayoutX()-imgP1.getLayoutX());
+			dy=(imgP2.getLayoutY()-imgP1.getLayoutY());
+			double change=MCD(dx,dy);
+			dx=Math.abs(dx/change);
+			dy=Math.abs(dy/change);
+			animation = new Timeline(new KeyFrame(Duration.millis(100), f-> {
+				if(airPlane.getLayoutX()<imgP2.getLayoutX() && airPlane.getLayoutY()<imgP2.getLayoutY()) {
+					airPlane.setLayoutX(airPlane.getLayoutX()+dy/dx);
+					airPlane.setLayoutY(airPlane.getLayoutY()+dy/dx);
+				}
+				if(airPlane.getLayoutX()<imgP2.getLayoutX() && airPlane.getLayoutY()>imgP2.getLayoutY()) {
+					airPlane.setLayoutX(airPlane.getLayoutX()+dy/dx);
+					airPlane.setLayoutY(airPlane.getLayoutY()-dy/dx);
+				}
+				if(airPlane.getLayoutX()>imgP2.getLayoutX() && airPlane.getLayoutY()>imgP2.getLayoutY()) {
+					airPlane.setLayoutX(airPlane.getLayoutX()-dy/dx);
+					airPlane.setLayoutY(airPlane.getLayoutY()-dy/dx);
+				}
+				if(airPlane.getLayoutX()>imgP2.getLayoutX() && airPlane.getLayoutY()<imgP2.getLayoutY()) {
+					airPlane.setLayoutX(airPlane.getLayoutX()-dy/dx);
+					airPlane.setLayoutY(airPlane.getLayoutY()+dy/dx);
+				}
+			}));
+			animation.setCycleCount(Timeline.INDEFINITE);
+			animation.play();
+		}
 	}
 	
 	public boolean isBomber1() {
