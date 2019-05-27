@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * This class represents the main methods of graph algorithms.
  * 
- * @author JuanchoVelezPro
+ * 
  *
  * @param <T> The vertex type of a graph that this class will do graph
  *        algorithms.

@@ -3,7 +3,7 @@ package dataStructure;
 /**
  * An aux class that helps the method Dijkstra.
  * 
- * @author JuanchoVelezPro
+ * 
  *
  * @param <T> The type of this class.
  */

@@ -3,23 +3,50 @@ package model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import dataStructure.*;
-
+/**
+ * This class represents the warControl that will lead the complete 
+ * destruction of the world as we knows  
+ * 
+ * 
+ * 
+ * 
+ */
 public class WarControl {
 
-	public static final int BOMBPOINTS=24;
 	
+	/**
+	 * this constanst represent the amount of cities that the program use
+	 * 
+	 */
+	public static final int BOMBPOINTS=24; 
+	
+	/**
+	 * this constant is an array where we place all the cities 
+	 */
 	private BombingPoint[] bPoints;
 	
+	
+	/*
+	 * this constant represents the graph 
+	 * 
+	 * */
 	private GraphByLists<BombingPoint, Integer> graph;
 
-
+	/**
+	 * 
+	 * this is the constructor method of the WarControl class
+	 * 
+	 * */
 	public WarControl() {
 		bPoints= new BombingPoint[BOMBPOINTS];
 		graph= new GraphByLists<>(BOMBPOINTS);
 		fillingArrayMethod();
 	}
 
-
+	
+	/**
+	 *this method allows the program to fill up the array of cities
+	 */
 	public void fillingArrayMethod() {
 		bPoints[0]= new BombingPoint("Washington");
 		bPoints[1]= new BombingPoint("Kansas");
@@ -49,6 +76,12 @@ public class WarControl {
 		fillingGraphMethod();
 	}
 	
+	
+	/**
+	 * 
+	 *this method allows the program to fill up the graph that we use 
+	 * 
+	 */
 	public void fillingGraphMethod() {	
 		for(int i=0; i<bPoints.length; i++) {
 			graph.addVertex(bPoints[i]);
@@ -162,32 +195,58 @@ public class WarControl {
 		
 	}
 
-
+	/**
+	 * method to get the aray of bombingPoints
+	 * @return the array of bombingPoints  
+	 */
 	public BombingPoint[] getbPoints() {
 		return bPoints;
 	}
 
-
+	/**
+	 *method to modify the array of bombingPoints that represents the cities 
+	 *@param a new array of bombingPoints
+	 */
 	public void setbPoints(BombingPoint[] bPoints) {
 		this.bPoints = bPoints;
 	}
 
-
+	/**
+	 *method to get the graph of BombingPoints
+	 *@return the graph of bombingPoints 
+	 */
 	public GraphByLists<BombingPoint, Integer> getGraph() {
 		return graph;
 	}
 
-
+	
+	/**
+	 *method to modify the graph of BombingPoints
+	 *@param graph a new graph of BombingPoints
+	 */
 	public void setGraph(GraphByLists<BombingPoint, Integer> graph) {
 		this.graph = graph;
 	}
-
+	
+	
+	/**
+	 *method that return the path that represent the shorter path using the dijkstra algorithm
+	 *@param start the starting point
+	 *@param end the ending point
+	 *@return an ArrayList that represents the shorter path
+	 */
 	public ArrayList<Vertex<BombingPoint>> getPath(Vertex<BombingPoint> start, Vertex<BombingPoint> end){
 		MethodsGraphs<BombingPoint, Integer> meth= new MethodsGraphs<>();
 		ArrayList<Vertex<BombingPoint>> path= meth.dijkstra(graph, start).creatingPath(start, end);
 		return path;
 	}
-
+	
+	/**
+	 *method that return the path in a String that represent the shorter path using the dijkstra algorithm
+	 *@param start the starting point
+	 *@param end the ending point
+	 *@return a String that represents the shorter path
+	 */
 	public String pathToString(Vertex<BombingPoint> start, Vertex<BombingPoint> end) {
 		
 		MethodsGraphs<BombingPoint,Integer> meth= new MethodsGraphs<>();
@@ -208,8 +267,11 @@ public class WarControl {
 		 
 		return pathS;
 	}
-
-	public int[] gethPathKruskal() {
+	/**
+	 *method that return minimun spam tree using the prim algoritm
+	 *@return an Array that represents the minimun spam tree
+	 */
+	public int[] gethPathPrim() {
 		
 		MethodsGraphs<BombingPoint, Integer> meth= new MethodsGraphs<>();
 		
@@ -219,7 +281,11 @@ public class WarControl {
 //		int[] pathIndex= meth.kruskal(graph);
 		return pathIndex;
 	}
-	
+	/**
+	 *method that search a bombingPoint in the array of bombingPoints 
+	 * @param id the string that idetifies the bombingPoint
+	 * @return the bombingPoint or null if the bPoint is not finded
+	 */
 	public BombingPoint findBombingPoint(String id) {
 		System.out.println(id);
 		for(int i=0;i<bPoints.length;i++) {

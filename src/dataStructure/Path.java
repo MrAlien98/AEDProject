@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * A class that represents a path.
  * 
- * @author JuanchoVelezPro.
+ * 
  *
  * @param <T> The vertex type.
  * @param <E> The edge type.
