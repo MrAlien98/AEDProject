@@ -46,8 +46,8 @@ class GraphByListsTest {
 	    	graph.addVertex(moscu);
 	    	graph.addVertex(washington);
 	    
-	    	graph.addEdge(washington, moscu, true, 1333, 0);
-	    	graph.addEdge(washington, moscu, true, 1000, 0);
+	    	graph.addEdge(washington, moscu, false, 7812, 0);
+
 	    
 	     }
 	    
@@ -81,10 +81,10 @@ class GraphByListsTest {
 	    	String washington = new String("Washington");
 	    	String moscu = new String("Moscu");
 	    
-	    	graph.addEdge(washington, moscu, true, 1333, 0);
-	    	graph.addEdge(washington, moscu, true, 1000, 0);
+	    	graph.addEdge(washington, moscu, false, 7812, 0);
 
-	        assertEquals(2, graph.numEdgesOfVertex(washington));
+
+	        assertEquals(1, graph.numEdgesOfVertex(washington));
 	    }
 	    
 	   
@@ -104,7 +104,7 @@ class GraphByListsTest {
 	    	
 	    	stageThree();
 	    	
-	    	assertEquals(2, graph.numEdgesOfVertex("Washington"));
+	    	assertEquals(1, graph.numEdgesOfVertex("Washington"));
 	    }
 	    
 }
