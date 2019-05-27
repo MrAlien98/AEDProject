@@ -48,6 +48,8 @@ public class SampleController {
     @FXML private ImageView airPlane;
     
     @FXML private Button butClear;
+    @FXML private Button bombEverything;
+    @FXML private Button startBombing;
     
     private ArrayList<Pair<ImageView, Boolean>> imgs;
     	
@@ -194,6 +196,11 @@ public class SampleController {
 	}
 	
 	public void nothingMethod() {
+		
+	}
+	
+	public void bombEverything() {
+		int[] ax=Main.getWar().gethPathKruskal();
 		
 	}
 	
