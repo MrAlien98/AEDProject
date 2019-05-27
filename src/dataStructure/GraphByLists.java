@@ -40,7 +40,7 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 	 */
 	public int getIndexVertex(T valueVertex) {
 		int index = -1;
-		for (int i = 0; i < vertices.size(); i++) {
+		for (int i=0;i<vertices.size();i++) {
 			if (vertices.get(i).getValue().equals(valueVertex))
 				index = i;
 		}
@@ -53,9 +53,7 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 		int d = getIndexVertex(destination);
 		if (directed) {
 			adjList.get(f).add(new Vertex<T>(destination));
-			vertices.get(f).getEdges()
-					.add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
-
+			vertices.get(f).getEdges().add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
 			edges.add(new Edge<E>(new Vertex<T>(from), new Vertex<T>(destination), cost, directed, value));
 		} else {
 			adjList.get(f).add(new Vertex<T>(destination));

@@ -6,7 +6,7 @@ import dataStructure.*;
 
 public class WarControl {
 
-	public static final int BOMBPOINTS=22;
+	public static final int BOMBPOINTS=24;
 	
 	private BombingPoint[] bPoints;
 	
@@ -21,35 +21,35 @@ public class WarControl {
 
 
 	public void fillingArrayMethod() {
-		bPoints[0]= new BombingPoint("Washington",0,0);
-		bPoints[1]= new BombingPoint("Kansas",0,0);
-		bPoints[2]= new BombingPoint("CiudaddeMexico",0,0);
-		bPoints[3]= new BombingPoint("Brasilia",0,0);
-		bPoints[4]= new BombingPoint("RiodeJaneiro",0,0);
-		bPoints[5]= new BombingPoint("Moscu",0,0);
-		bPoints[6]= new BombingPoint("Krasnoyarsk",0,0);
-		bPoints[7]= new BombingPoint("Pekin",0,0);
-		bPoints[8]= new BombingPoint("Hong Kong",0,0);
-		bPoints[9]= new BombingPoint("Canberra",0,0);
-		bPoints[10]= new BombingPoint("NuevaDelhi",0,0);
-		bPoints[11]= new BombingPoint("Teheran",0,0);
-		bPoints[12]= new BombingPoint("Riad",0,0);
-		bPoints[13]= new BombingPoint("BuenosAires",0,0);
-		bPoints[14]= new BombingPoint("Astana",0,0);
-		bPoints[15]= new BombingPoint("UlanBator",0,0);
-		bPoints[16]= new BombingPoint("Argel",0,0);
-		bPoints[17]= new BombingPoint("ciudaddelCabo",0,0);
-		bPoints[18]= new BombingPoint("Bogota",0,0);
-		bPoints[19]= new BombingPoint("Kinshasa",0,0);
-		bPoints[20]= new BombingPoint("Ottawa",0,0);
-		bPoints[21]= new BombingPoint("Alberta",0,0);
-		
+		bPoints[0]= new BombingPoint("Washington");
+		bPoints[1]= new BombingPoint("Kansas");
+		bPoints[2]= new BombingPoint("CiudaddeMexico");
+		bPoints[3]= new BombingPoint("Brasilia");
+		bPoints[4]= new BombingPoint("RiodeJaneiro");
+		bPoints[5]= new BombingPoint("Moscu");
+		bPoints[6]= new BombingPoint("Krasnoyarsk");
+		bPoints[7]= new BombingPoint("Pekin");
+		bPoints[8]= new BombingPoint("HongKong");
+		bPoints[9]= new BombingPoint("Camberra");
+		bPoints[10]= new BombingPoint("NewDelhi");
+		bPoints[11]= new BombingPoint("Teheran");
+		bPoints[12]= new BombingPoint("Riad");
+		bPoints[13]= new BombingPoint("BuenosAires");
+		bPoints[14]= new BombingPoint("Astana");
+		bPoints[15]= new BombingPoint("UlanBator");
+		bPoints[16]= new BombingPoint("Argel");
+		bPoints[17]= new BombingPoint("CiudadDelCabo");
+		bPoints[18]= new BombingPoint("Bogota");
+		bPoints[19]= new BombingPoint("Kinsasa");
+		bPoints[20]= new BombingPoint("Ottawa");
+		bPoints[21]= new BombingPoint("Alberta");
+		bPoints[22]= new BombingPoint("Pretoria");
+		bPoints[23]= new BombingPoint("Bloemfontein");
 	
 		fillingGraphMethod();
 	}
 	
-	public void fillingGraphMethod() {
-		
+	public void fillingGraphMethod() {	
 		for(int i=0; i<bPoints.length; i++) {
 			graph.addVertex(bPoints[i]);
 		}
@@ -75,124 +75,135 @@ public class WarControl {
 		graph.addEdge(bPoints[0], bPoints[19], false, 10495, 0);
 		graph.addEdge(bPoints[0], bPoints[20], false, 732, 0);
 		graph.addEdge(bPoints[0], bPoints[21], false, 569, 0);
+		graph.addEdge(bPoints[0], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[0], bPoints[23], false, 13049, 0);
 		
 		//Kansas
 		graph.addEdge(bPoints[1], bPoints[0], false, 328, 0);
 		graph.addEdge(bPoints[1], bPoints[2], false, 3500, 0);
 		graph.addEdge(bPoints[1], bPoints[3], false, 7100, 0);
 		graph.addEdge(bPoints[1], bPoints[4], false, 8100, 0);
-		graph.addEdge(bPoints[1], bPoints[5], false,8000 , 0);
+		graph.addEdge(bPoints[1], bPoints[5], false,8300 , 0);
 		graph.addEdge(bPoints[1], bPoints[6], false, 7300, 0);
-		graph.addEdge(bPoints[1], bPoints[7], false, 12000, 0);
-		graph.addEdge(bPoints[1], bPoints[8], false, 14000, 0);
-		graph.addEdge(bPoints[1], bPoints[9], false, 16000, 0);
-		graph.addEdge(bPoints[1], bPoints[10], false, 12000, 0);
-		graph.addEdge(bPoints[1], bPoints[11], false, 11000, 0);
+		graph.addEdge(bPoints[1], bPoints[7], false, 12300, 0);
+		graph.addEdge(bPoints[1], bPoints[8], false, 14300, 0);
+		graph.addEdge(bPoints[1], bPoints[9], false, 16300, 0);
+		graph.addEdge(bPoints[1], bPoints[10], false, 12300,0);
+		graph.addEdge(bPoints[1], bPoints[11], false, 11300,0);
 		graph.addEdge(bPoints[1], bPoints[12], false, 8500, 0);
-		graph.addEdge(bPoints[1], bPoints[13], false, 10000, 0);
-		graph.addEdge(bPoints[1], bPoints[14], false, 10500, 0);
+		graph.addEdge(bPoints[1], bPoints[13], false, 13000,0);
+		graph.addEdge(bPoints[1], bPoints[14], false, 10500,0);
 		graph.addEdge(bPoints[1], bPoints[15], false, 6780, 0);
-		graph.addEdge(bPoints[1], bPoints[16], false, 14000, 0);
+		graph.addEdge(bPoints[1], bPoints[16], false, 14300,0);
 		graph.addEdge(bPoints[1], bPoints[17], false, 4500, 0);
-		graph.addEdge(bPoints[1], bPoints[18], false, 10700, 0);
-		graph.addEdge(bPoints[1], bPoints[19], false, 12200, 0);
+		graph.addEdge(bPoints[1], bPoints[18], false, 10700,0);
+		graph.addEdge(bPoints[1], bPoints[19], false, 12200,0);
 		graph.addEdge(bPoints[1], bPoints[20], false, 676, 0);
 		graph.addEdge(bPoints[1], bPoints[21], false, 565, 0);
-	
-	
+		graph.addEdge(bPoints[1], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[1], bPoints[23], false, 14867, 0);
+
 		//Ciudad de mexico
 		graph.addEdge(bPoints[2], bPoints[0], false, 3027, 0);
 		graph.addEdge(bPoints[2], bPoints[1], false, 3300, 0);
-		graph.addEdge(bPoints[2], bPoints[3], false, 7000, 0);
+		graph.addEdge(bPoints[2], bPoints[3], false, 7300, 0);
 		graph.addEdge(bPoints[2], bPoints[4], false, 7055, 0);
-		graph.addEdge(bPoints[2], bPoints[5], false,12000 , 0);
-		graph.addEdge(bPoints[2], bPoints[6], false, 11000, 0);
+		graph.addEdge(bPoints[2], bPoints[5], false,12300 , 0);
+		graph.addEdge(bPoints[2], bPoints[6], false, 11300, 0);
 		graph.addEdge(bPoints[2], bPoints[7], false, 13500, 0);
-		graph.addEdge(bPoints[2], bPoints[8], false, 16000, 0);
-		graph.addEdge(bPoints[2], bPoints[9], false, 14000, 0);
-		graph.addEdge(bPoints[2], bPoints[10], false, 13000, 0);
+		graph.addEdge(bPoints[2], bPoints[8], false, 16300, 0);
+		graph.addEdge(bPoints[2], bPoints[9], false, 14300, 0);
+		graph.addEdge(bPoints[2], bPoints[10], false, 13300, 0);
 		graph.addEdge(bPoints[2], bPoints[11], false, 14500, 0);
-		graph.addEdge(bPoints[2], bPoints[12], false, 8000, 0);
-		graph.addEdge(bPoints[2], bPoints[13], false, 9000, 0);
+		graph.addEdge(bPoints[2], bPoints[12], false, 8300, 0);
+		graph.addEdge(bPoints[2], bPoints[13], false, 9300, 0);
 		graph.addEdge(bPoints[2], bPoints[14], false, 11700, 0);
-		graph.addEdge(bPoints[2], bPoints[15], false, 10000, 0);
+		graph.addEdge(bPoints[2], bPoints[15], false, 13000, 0);
 		graph.addEdge(bPoints[2], bPoints[16], false, 14200, 0);
 		graph.addEdge(bPoints[2], bPoints[17], false, 3700, 0);
-		graph.addEdge(bPoints[2], bPoints[18], false, 13000, 0);
+		graph.addEdge(bPoints[2], bPoints[18], false, 13300, 0);
 		graph.addEdge(bPoints[2], bPoints[19], false, 4100, 0);
 		graph.addEdge(bPoints[2], bPoints[20], false, 3600, 0);
 		graph.addEdge(bPoints[2], bPoints[21], false, 3280, 0);
-	
+		graph.addEdge(bPoints[2], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[2], bPoints[23], false, 14405, 0);
+		
 		//Brasilia
-		graph.addEdge(bPoints[3], bPoints[0], false, 7000, 0);
+		graph.addEdge(bPoints[3], bPoints[0], false, 7300, 0);
 		graph.addEdge(bPoints[3], bPoints[1], false, 6700, 0);
 		graph.addEdge(bPoints[3], bPoints[2], false, 6900, 0);
 		graph.addEdge(bPoints[3], bPoints[4], false, 100, 0);
-		graph.addEdge(bPoints[3], bPoints[5], false,8000 , 0);
+		graph.addEdge(bPoints[3], bPoints[5], false,8300 , 0);
 		graph.addEdge(bPoints[3], bPoints[6], false, 8500, 0);
-		graph.addEdge(bPoints[3], bPoints[7], false, 9000, 0);
-		graph.addEdge(bPoints[3], bPoints[8], false, 10000, 0);
-		graph.addEdge(bPoints[3], bPoints[9], false, 12000, 0);
-		graph.addEdge(bPoints[3], bPoints[10], false, 10000, 0);
+		graph.addEdge(bPoints[3], bPoints[7], false, 9300, 0);
+		graph.addEdge(bPoints[3], bPoints[8], false, 13000, 0);
+		graph.addEdge(bPoints[3], bPoints[9], false, 12300, 0);
+		graph.addEdge(bPoints[3], bPoints[10], false, 13000, 0);
 		graph.addEdge(bPoints[3], bPoints[11], false, 5600, 0);
-		graph.addEdge(bPoints[3], bPoints[12], false, 7000, 0);
+		graph.addEdge(bPoints[3], bPoints[12], false, 7300, 0);
 		graph.addEdge(bPoints[3], bPoints[13], false, 2900, 0);
 		graph.addEdge(bPoints[3], bPoints[14], false, 7652, 0);
 		graph.addEdge(bPoints[3], bPoints[15], false, 5642, 0);
 		graph.addEdge(bPoints[3], bPoints[16], false, 9876, 0);
 		graph.addEdge(bPoints[3], bPoints[17], false, 9876, 0);
 		graph.addEdge(bPoints[3], bPoints[18], false, 9834, 0);
-		graph.addEdge(bPoints[3], bPoints[19], false, 6000, 0);
-		graph.addEdge(bPoints[3], bPoints[20], false, 7000, 0);
+		graph.addEdge(bPoints[3], bPoints[19], false, 6300, 0);
+		graph.addEdge(bPoints[3], bPoints[20], false, 7300, 0);
 		graph.addEdge(bPoints[3], bPoints[21], false, 7300, 0);
-	
+		graph.addEdge(bPoints[3], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[3], bPoints[23], false, 7635, 0);
+		
 		//Rio de Janeiro
-		graph.addEdge(bPoints[4], bPoints[0], false, 7000, 0);
+		graph.addEdge(bPoints[4], bPoints[0], false, 7300, 0);
 		graph.addEdge(bPoints[4], bPoints[1], false, 6700, 0);
 		graph.addEdge(bPoints[4], bPoints[2], false, 6900, 0);
 		graph.addEdge(bPoints[4], bPoints[4], false, 100, 0);
-		graph.addEdge(bPoints[4], bPoints[5], false,8000 , 0);
+		graph.addEdge(bPoints[4], bPoints[5], false,8300 , 0);
 		graph.addEdge(bPoints[4], bPoints[6], false, 8500, 0);
-		graph.addEdge(bPoints[4], bPoints[7], false, 9000, 0);
-		graph.addEdge(bPoints[4], bPoints[8], false, 10000, 0);
-		graph.addEdge(bPoints[4], bPoints[9], false, 12000, 0);
-		graph.addEdge(bPoints[4], bPoints[10], false, 10000, 0);
+		graph.addEdge(bPoints[4], bPoints[7], false, 9300, 0);
+		graph.addEdge(bPoints[4], bPoints[8], false, 13000, 0);
+		graph.addEdge(bPoints[4], bPoints[9], false, 12300, 0);
+		graph.addEdge(bPoints[4], bPoints[10], false, 13000, 0);
 		graph.addEdge(bPoints[4], bPoints[11], false, 5600, 0);
-		graph.addEdge(bPoints[4], bPoints[12], false, 7000, 0);
+		graph.addEdge(bPoints[4], bPoints[12], false, 7300, 0);
 		graph.addEdge(bPoints[4], bPoints[13], false, 3009, 0);
 		graph.addEdge(bPoints[4], bPoints[14], false, 9876, 0);
 		graph.addEdge(bPoints[4], bPoints[15], false, 5642, 0);
 		graph.addEdge(bPoints[4], bPoints[16], false, 9876, 0);
 		graph.addEdge(bPoints[4], bPoints[17], false, 9876, 0);
 		graph.addEdge(bPoints[4], bPoints[18], false, 9834, 0);
-		graph.addEdge(bPoints[4], bPoints[19], false, 6000, 0);
-		graph.addEdge(bPoints[4], bPoints[20], false, 7000, 0);
+		graph.addEdge(bPoints[4], bPoints[19], false, 6300, 0);
+		graph.addEdge(bPoints[4], bPoints[20], false, 7300, 0);
 		graph.addEdge(bPoints[4], bPoints[21], false, 7300, 0);
+		graph.addEdge(bPoints[4], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[4], bPoints[23], false, 6862, 0);
 		
 		//Moscu
 		graph.addEdge(bPoints[5], bPoints[1], false, 7600, 0);
 		graph.addEdge(bPoints[5], bPoints[2], false, 7800, 0);
-		graph.addEdge(bPoints[5], bPoints[3], false, 8000, 0);
-		graph.addEdge(bPoints[5], bPoints[4], false, 11000, 0);
+		graph.addEdge(bPoints[5], bPoints[3], false, 8300, 0);
+		graph.addEdge(bPoints[5], bPoints[4], false, 11300, 0);
 		graph.addEdge(bPoints[5], bPoints[5], false,10890 , 0);
-		graph.addEdge(bPoints[5], bPoints[6], false, 4000, 0);
+		graph.addEdge(bPoints[5], bPoints[6], false, 4300, 0);
 		graph.addEdge(bPoints[5], bPoints[7], false, 4500, 0);
 		graph.addEdge(bPoints[5], bPoints[8], false, 4650, 0);
-		graph.addEdge(bPoints[5], bPoints[9], false, 7000, 0);
+		graph.addEdge(bPoints[5], bPoints[9], false, 7300, 0);
 		graph.addEdge(bPoints[5], bPoints[10], false, 4500, 0);
-		graph.addEdge(bPoints[5], bPoints[11], false, 5000, 0);
-		graph.addEdge(bPoints[5], bPoints[12], false, 12000, 0);
+		graph.addEdge(bPoints[5], bPoints[11], false, 5300, 0);
+		graph.addEdge(bPoints[5], bPoints[12], false, 12300, 0);
 		graph.addEdge(bPoints[5], bPoints[13], false, 5678, 0);
 		graph.addEdge(bPoints[5], bPoints[14], false, 4578, 0);
 		graph.addEdge(bPoints[5], bPoints[15], false, 7890, 0);
-		graph.addEdge(bPoints[5], bPoints[16], false, 13000, 0);
-		graph.addEdge(bPoints[5], bPoints[17], false, 7000, 0);
+		graph.addEdge(bPoints[5], bPoints[16], false, 13300, 0);
+		graph.addEdge(bPoints[5], bPoints[17], false, 7300, 0);
 		graph.addEdge(bPoints[5], bPoints[18], false, 14500, 0);
-		graph.addEdge(bPoints[5], bPoints[19], false, 7000, 0);
+		graph.addEdge(bPoints[5], bPoints[19], false, 7300, 0);
 		graph.addEdge(bPoints[5], bPoints[20], false, 7200, 0);
 		graph.addEdge(bPoints[5], bPoints[21], false, 9876, 0);
+		graph.addEdge(bPoints[5], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[5], bPoints[23], false, 13097, 0);
 		
-		//St Petersburgo
+		//Krasnoyarsk
 		graph.addEdge(bPoints[6], bPoints[1], false, 12345, 0);
 		graph.addEdge(bPoints[6], bPoints[2], false, 18765, 0);
 		graph.addEdge(bPoints[6], bPoints[3], false, 15432, 0);
@@ -214,6 +225,8 @@ public class WarControl {
 		graph.addEdge(bPoints[6], bPoints[19], false, 18654, 0);
 		graph.addEdge(bPoints[6], bPoints[20], false, 98765, 0);
 		graph.addEdge(bPoints[6], bPoints[21], false, 6789, 0);
+		graph.addEdge(bPoints[6], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[6], bPoints[23], false, 16129, 0);
 		
 		//Pekin
 		graph.addEdge(bPoints[7], bPoints[1], false, 7654,0);
@@ -237,6 +250,8 @@ public class WarControl {
 		graph.addEdge(bPoints[7], bPoints[19], false, 10987, 0);
 		graph.addEdge(bPoints[7], bPoints[20], false, 9285, 0);
 		graph.addEdge(bPoints[7], bPoints[21], false, 9712, 0);
+		graph.addEdge(bPoints[7], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[7], bPoints[23], false, 12040, 0);
 		
 		//Hong-Kong
 		graph.addEdge(bPoints[8], bPoints[0], false, 9875, 0);
@@ -260,8 +275,10 @@ public class WarControl {
 		graph.addEdge(bPoints[8], bPoints[19], false, 9678, 0);
 		graph.addEdge(bPoints[8], bPoints[20], false, 8656, 0);
 		graph.addEdge(bPoints[8], bPoints[21], false, 7854, 0);
+		graph.addEdge(bPoints[8], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[8], bPoints[23], false, 11000, 0);
 		
-		//Canberra
+		//Camberra
 		graph.addEdge(bPoints[9], bPoints[0], false, 8965, 0);
 		graph.addEdge(bPoints[9], bPoints[1], false, 9345, 0);
 		graph.addEdge(bPoints[9], bPoints[2], false, 11987, 0);
@@ -283,7 +300,9 @@ public class WarControl {
 		graph.addEdge(bPoints[9], bPoints[19], false, 9876, 0);
 		graph.addEdge(bPoints[9], bPoints[20], false, 10987, 0);
 		graph.addEdge(bPoints[9], bPoints[21], false, 11234, 0);
-		
+		graph.addEdge(bPoints[9], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[9], bPoints[23], false, 10687, 0);
+
 		//Nueva Delhi
 		graph.addEdge(bPoints[10], bPoints[0], false, 9876, 0);
 		graph.addEdge(bPoints[10], bPoints[1], false, 11234, 0);
@@ -306,7 +325,9 @@ public class WarControl {
 		graph.addEdge(bPoints[10], bPoints[19], false, 9012, 0);
 		graph.addEdge(bPoints[10], bPoints[20], false, 9054, 0);
 		graph.addEdge(bPoints[10], bPoints[21], false, 14234, 0);
-		
+		graph.addEdge(bPoints[10], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[10], bPoints[23], false, 8396, 0);
+
 		//Teheran
 		graph.addEdge(bPoints[11], bPoints[0], false, 9567, 0);
 		graph.addEdge(bPoints[11], bPoints[1], false, 9812, 0);
@@ -317,7 +338,7 @@ public class WarControl {
 		graph.addEdge(bPoints[11], bPoints[6], false, 8976, 0);
 		graph.addEdge(bPoints[11], bPoints[7], false, 7098, 0);
 		graph.addEdge(bPoints[11], bPoints[8], false, 8765, 0);
-		graph.addEdge(bPoints[11], bPoints[9], false, 9000, 0);
+		graph.addEdge(bPoints[11], bPoints[9], false, 9300, 0);
 		graph.addEdge(bPoints[11], bPoints[10], false, 12345, 0);
 		graph.addEdge(bPoints[11], bPoints[12], false, 11234, 0);
 		graph.addEdge(bPoints[11], bPoints[13], false, 9127, 0);
@@ -329,7 +350,9 @@ public class WarControl {
 		graph.addEdge(bPoints[11], bPoints[19], false, 9876, 0);
 		graph.addEdge(bPoints[11], bPoints[20], false, 9999, 0);
 		graph.addEdge(bPoints[11], bPoints[21], false, 12345, 0);
-		
+		graph.addEdge(bPoints[11], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[11], bPoints[23], false, 11181, 0);
+
 		//Riad
 		graph.addEdge(bPoints[12], bPoints[0], false, 13567, 0);
 		graph.addEdge(bPoints[12], bPoints[1], false, 12345, 0);
@@ -352,7 +375,9 @@ public class WarControl {
 		graph.addEdge(bPoints[12], bPoints[19], false, 10763, 0);
 		graph.addEdge(bPoints[12], bPoints[20], false, 8765, 0);
 		graph.addEdge(bPoints[12], bPoints[21], false, 9876, 0);
-		
+		graph.addEdge(bPoints[12], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[12], bPoints[23], false, 10631, 0);
+
 		//Buenos Aires
 		graph.addEdge(bPoints[13], bPoints[0], false, 12357, 0);
 		graph.addEdge(bPoints[13], bPoints[1], false, 10233, 0);
@@ -375,7 +400,9 @@ public class WarControl {
 		graph.addEdge(bPoints[13], bPoints[19], false, 16893, 0);
 		graph.addEdge(bPoints[13], bPoints[20], false, 7899, 0);
 		graph.addEdge(bPoints[13], bPoints[21], false, 98760, 0);
-		
+		graph.addEdge(bPoints[13], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[13], bPoints[23], false, 7762, 0);
+
 		//Astana
 		graph.addEdge(bPoints[14], bPoints[0], false, 9872, 0);
 		graph.addEdge(bPoints[14], bPoints[1], false, 11345, 0);
@@ -398,7 +425,9 @@ public class WarControl {
 		graph.addEdge(bPoints[14], bPoints[19], false, 5678, 0);
 		graph.addEdge(bPoints[14], bPoints[20], false, 9865, 0);
 		graph.addEdge(bPoints[14], bPoints[21], false, 6547, 0);
-		
+		graph.addEdge(bPoints[14], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[14], bPoints[23], false, 14875, 0);
+
 		//Ulab Bator
 		graph.addEdge(bPoints[15], bPoints[0], false, 8765, 0);
 		graph.addEdge(bPoints[15], bPoints[1], false, 7653, 0);
@@ -421,7 +450,9 @@ public class WarControl {
 		graph.addEdge(bPoints[15], bPoints[19], false, 9566, 0);
 		graph.addEdge(bPoints[15], bPoints[20], false, 9876, 0);
 		graph.addEdge(bPoints[15], bPoints[21], false, 6790, 0);
-		
+		graph.addEdge(bPoints[15], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[15], bPoints[23], false, 17779, 0);
+
 		//Argel
 		graph.addEdge(bPoints[16], bPoints[1], false, 8990, 0);
 		graph.addEdge(bPoints[16], bPoints[2], false, 6789, 0);
@@ -434,7 +465,7 @@ public class WarControl {
 		graph.addEdge(bPoints[16], bPoints[9], false, 12334, 0);
 		graph.addEdge(bPoints[16], bPoints[10], false, 12644, 0);
 		graph.addEdge(bPoints[16], bPoints[11], false, 12987, 0);
-		graph.addEdge(bPoints[16], bPoints[12], false, 15000, 0);
+		graph.addEdge(bPoints[16], bPoints[12], false, 15300, 0);
 		graph.addEdge(bPoints[16], bPoints[13], false, 9876, 0);
 		graph.addEdge(bPoints[16], bPoints[14], false, 5642, 0);
 		graph.addEdge(bPoints[16], bPoints[15], false, 6753, 0);
@@ -444,7 +475,9 @@ public class WarControl {
 		graph.addEdge(bPoints[16], bPoints[19], false,6789 , 0);
 		graph.addEdge(bPoints[16], bPoints[20], false, 9345, 0);
 		graph.addEdge(bPoints[16], bPoints[21], false, 9876, 0);
-		
+		graph.addEdge(bPoints[16], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[16], bPoints[23], false, 10756, 0);
+
 		//Ciudad del Cabo
 		graph.addEdge(bPoints[17], bPoints[0], false, 12789, 0);
 		graph.addEdge(bPoints[17], bPoints[1], false, 9456, 0);
@@ -467,7 +500,9 @@ public class WarControl {
 		graph.addEdge(bPoints[17], bPoints[19], false, 15677, 0);
 		graph.addEdge(bPoints[17], bPoints[20], false, 12345, 0);
 		graph.addEdge(bPoints[17], bPoints[21], false, 8765, 0);
-		
+		graph.addEdge(bPoints[17], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[17], bPoints[23], false, 1004, 0);
+
 		//Bogota
 		graph.addEdge(bPoints[18], bPoints[0], false, 9874, 0);
 		graph.addEdge(bPoints[18], bPoints[1], false, 7865, 0);
@@ -490,7 +525,9 @@ public class WarControl {
 		graph.addEdge(bPoints[18], bPoints[19], false, 7893, 0);
 		graph.addEdge(bPoints[18], bPoints[20], false, 9732, 0);
 		graph.addEdge(bPoints[18], bPoints[21], false, 5647, 0);
-		
+		graph.addEdge(bPoints[18], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[18], bPoints[23], false, 11248, 0);
+
 		//Kinsasa
 		graph.addEdge(bPoints[19], bPoints[0], false, 9873, 0);
 		graph.addEdge(bPoints[19], bPoints[1], false, 5647, 0);
@@ -513,7 +550,9 @@ public class WarControl {
 		graph.addEdge(bPoints[19], bPoints[18], false, 9865, 0);
 		graph.addEdge(bPoints[19], bPoints[20], false, 8754, 0);
 		graph.addEdge(bPoints[19], bPoints[21], false, 9876, 0);
-	
+		graph.addEdge(bPoints[19], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[19], bPoints[23], false, 4100, 0);
+
 		//Ottawa
 		graph.addEdge(bPoints[20], bPoints[0], false, 432, 0);
 		graph.addEdge(bPoints[20], bPoints[1], false, 234, 0);
@@ -536,7 +575,9 @@ public class WarControl {
 		graph.addEdge(bPoints[20], bPoints[18], false, 8765, 0);
 		graph.addEdge(bPoints[20], bPoints[19], false, 9643, 0);
 		graph.addEdge(bPoints[20], bPoints[21], false, 328, 0);
-		
+		graph.addEdge(bPoints[20], bPoints[22], false, 328, 0);
+		graph.addEdge(bPoints[20], bPoints[23], false, 13133, 0);
+
 		//Toronto
 		graph.addEdge(bPoints[21], bPoints[0], false, 300, 0);
 		graph.addEdge(bPoints[21], bPoints[1], false, 270, 0);
@@ -546,7 +587,7 @@ public class WarControl {
 		graph.addEdge(bPoints[21], bPoints[5], false, 12300 , 0);
 		graph.addEdge(bPoints[21], bPoints[6], false, 14500, 0);
 		graph.addEdge(bPoints[21], bPoints[7], false, 13800, 0);
-		graph.addEdge(bPoints[21], bPoints[8], false, 12000, 0);
+		graph.addEdge(bPoints[21], bPoints[8], false, 12300, 0);
 		graph.addEdge(bPoints[21], bPoints[9], false, 6789, 0);
 		graph.addEdge(bPoints[21], bPoints[10], false, 9876, 0);
 		graph.addEdge(bPoints[21], bPoints[11], false, 5678, 0);
@@ -559,6 +600,58 @@ public class WarControl {
 		graph.addEdge(bPoints[21], bPoints[18], false, 6753, 0);
 		graph.addEdge(bPoints[21], bPoints[19], false, 8769, 0);
 		graph.addEdge(bPoints[21], bPoints[20], false, 300, 0);
+		graph.addEdge(bPoints[21], bPoints[22], false, 300, 0);
+		graph.addEdge(bPoints[21], bPoints[23], false, 15931, 0);
+
+		//Pretoria
+		graph.addEdge(bPoints[22], bPoints[0], false, 569, 0);
+		graph.addEdge(bPoints[22], bPoints[1], false, 328, 0);
+		graph.addEdge(bPoints[22], bPoints[2], false, 3027, 0);
+		graph.addEdge(bPoints[22], bPoints[3], false, 6782, 0);
+		graph.addEdge(bPoints[22], bPoints[4], false, 7712, 0);
+		graph.addEdge(bPoints[22], bPoints[5], false,7812 , 0);
+		graph.addEdge(bPoints[22], bPoints[6], false, 6723, 0);
+		graph.addEdge(bPoints[22], bPoints[7], false, 7167, 0);
+		graph.addEdge(bPoints[22], bPoints[8], false, 12123, 0);
+		graph.addEdge(bPoints[22], bPoints[9], false, 12092, 0);
+		graph.addEdge(bPoints[22], bPoints[10], false, 15923, 0);
+		graph.addEdge(bPoints[22], bPoints[11], false, 12029, 0);
+		graph.addEdge(bPoints[22], bPoints[12], false, 10164, 0);
+		graph.addEdge(bPoints[22], bPoints[13], false, 10828, 0);
+		graph.addEdge(bPoints[22], bPoints[14], false, 8345, 0);
+		graph.addEdge(bPoints[22], bPoints[15], false, 9527, 0);
+		graph.addEdge(bPoints[22], bPoints[16], false, 10341, 0);
+		graph.addEdge(bPoints[22], bPoints[17], false, 6790, 0);
+		graph.addEdge(bPoints[22], bPoints[18], false, 3819, 0);
+		graph.addEdge(bPoints[22], bPoints[19], false, 10495, 0);
+		graph.addEdge(bPoints[22], bPoints[20], false, 732, 0);
+		graph.addEdge(bPoints[22], bPoints[21], false, 569, 0);
+		graph.addEdge(bPoints[22], bPoints[23], false, 466, 0);
+
+		//Bloemfontein
+		graph.addEdge(bPoints[23], bPoints[0], false, 13049, 0);
+		graph.addEdge(bPoints[23], bPoints[1], false, 14867, 0);
+		graph.addEdge(bPoints[23], bPoints[2], false, 14405, 0);
+		graph.addEdge(bPoints[23], bPoints[3], false, 7635, 0);
+		graph.addEdge(bPoints[23], bPoints[4], false, 6862, 0);
+		graph.addEdge(bPoints[23], bPoints[5], false, 13097, 0);
+		graph.addEdge(bPoints[23], bPoints[6], false, 16129, 0);
+		graph.addEdge(bPoints[23], bPoints[7], false, 12040, 0);
+		graph.addEdge(bPoints[23], bPoints[8], false, 11000, 0);
+		graph.addEdge(bPoints[23], bPoints[9], false, 10687, 0);
+		graph.addEdge(bPoints[23], bPoints[10], false, 8396, 0);
+		graph.addEdge(bPoints[23], bPoints[11], false, 11181, 0);
+		graph.addEdge(bPoints[23], bPoints[12], false, 10631, 0);
+		graph.addEdge(bPoints[23], bPoints[13], false, 7762, 0);
+		graph.addEdge(bPoints[23], bPoints[14], false, 14875, 0);
+		graph.addEdge(bPoints[23], bPoints[15], false, 17779, 0);
+		graph.addEdge(bPoints[23], bPoints[16], false, 10756, 0);
+		graph.addEdge(bPoints[23], bPoints[17], false, 1004, 0);
+		graph.addEdge(bPoints[23], bPoints[18], false, 11248, 0);
+		graph.addEdge(bPoints[23], bPoints[19], false, 4100, 0);
+		graph.addEdge(bPoints[23], bPoints[20], false, 13133, 0);
+		graph.addEdge(bPoints[23], bPoints[21], false, 15931, 0);
+		graph.addEdge(bPoints[23], bPoints[22], false, 466, 0);
 		
 	}
 
@@ -583,11 +676,8 @@ public class WarControl {
 	}
 
 	public ArrayList<Vertex<BombingPoint>> getPath(Vertex<BombingPoint> start, Vertex<BombingPoint> end){
-		
 		MethodsGraphs<BombingPoint, Integer> meth= new MethodsGraphs<>();
-		
 		ArrayList<Vertex<BombingPoint>> path= meth.dijkstra(graph, start).creatingPath(start, end);
-		
 		return path;
 	}
 

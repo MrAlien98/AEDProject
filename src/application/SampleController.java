@@ -39,7 +39,7 @@ public class SampleController {
     @FXML private ImageView  Riad;
     @FXML private ImageView  Argel;
     @FXML private ImageView  Camberra;
-    @FXML private ImageView  CiudadaDelCabo;
+    @FXML private ImageView  CiudadDelCabo;
     @FXML private ImageView  Bloemfontein;
     @FXML private ImageView  Pretoria;
     @FXML private ImageView  Kinsasa;
@@ -79,7 +79,7 @@ public class SampleController {
 		Tooltip.install( Riad, new Tooltip("Riad, Arabia Saudita"));
 		Tooltip.install( Argel, new Tooltip("Argel, Argelia"));
 		Tooltip.install( Camberra, new Tooltip("Camberra, Australia"));
-		Tooltip.install( CiudadaDelCabo, new Tooltip("Ciudad del Cabo, Sudafrica"));
+		Tooltip.install( CiudadDelCabo, new Tooltip("Ciudad del Cabo, Sudafrica"));
 		Tooltip.install( Bloemfontein, new Tooltip("Bloemfontein, Sudafrica"));
 		Tooltip.install( Pretoria, new Tooltip("Pretoria, Sudafrica"));
 		Tooltip.install( Kinsasa, new Tooltip("Kinsasa, Republica Democratica del Congo"));
@@ -106,7 +106,7 @@ public class SampleController {
     	imgs.add(new Pair<ImageView, Boolean>(Riad,false));
     	imgs.add(new Pair<ImageView, Boolean>(Argel,false));
     	imgs.add(new Pair<ImageView, Boolean>(Camberra,false));
-    	imgs.add(new Pair<ImageView, Boolean>(CiudadaDelCabo,false));
+    	imgs.add(new Pair<ImageView, Boolean>(CiudadDelCabo,false));
     	imgs.add(new Pair<ImageView, Boolean>(Bloemfontein,false));
     	imgs.add(new Pair<ImageView, Boolean>(Pretoria,false));
     	imgs.add(new Pair<ImageView, Boolean>(Kinsasa,false));
@@ -117,6 +117,11 @@ public class SampleController {
 	public void actions() {
 		butClear.setOnAction(e->{
 			actions();
+//			try {
+				Main.getRoot().getChildren().removeIf(h -> (h instanceof Line));
+//			}catch(Exception g) {
+//				nothingMethod();
+//			}
 			Main.getRoot().getChildren().remove(stroke);
 			bomber1=false;
 			bomber2=false;
@@ -189,9 +194,10 @@ public class SampleController {
 			}
 		}
 		for(int i=1;i<marked.size();i++) {
-			stroke.setStartX(marked.get(i-1).getLayoutX());	stroke.setStartY(marked.get(i-1).getLayoutY());
-			stroke.setEndX(marked.get(i).getLayoutX());	stroke.setEndY(marked.get(i).getLayoutY());
-			Main.getRoot().getChildren().add(stroke);
+			Line linea=new Line();
+			linea.setStartX(marked.get(i-1).getLayoutX());	linea.setStartY(marked.get(i-1).getLayoutY());
+			linea.setEndX(marked.get(i).getLayoutX());	linea.setEndY(marked.get(i).getLayoutY());
+			Main.getRoot().getChildren().add(linea);
 		}
 	}
 	
