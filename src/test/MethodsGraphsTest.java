@@ -722,5 +722,24 @@ class MethodsGraphsTest {
 			
 			assertEquals(28, mG.prim(graphList, new Vertex<Integer>(0)));
 		}
+		
+		// Test Kruskal for GraphByMatrix
+		@Test
+		public void testKruskal() {
+			
+			stageSeven();
+			
+			assertEquals(25, mG.kruskal(graphMatrix));
+		}
+		
+		
+		// Test Kruskal for GraphByMatrix
+		@Test
+		public void testKruskalTwo() {
+			
+			stageEight();
+			
+			assertEquals(25, mG.kruskal(graphList));
+		}
 	
 }
