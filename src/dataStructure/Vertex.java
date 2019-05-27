@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * This class represents a vertex of a graph.
- * @author JuanchoVelezPro
+ * 
  *
  * @param <T> The graph type.
  */

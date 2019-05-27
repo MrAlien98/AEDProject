@@ -2,7 +2,7 @@ package dataStructure;
 
 /**
  * This class represents an edge of a graph. 
- * @author JuanchoVelezPro
+ * 
  *
  * @param <E> The edge type.
  */
