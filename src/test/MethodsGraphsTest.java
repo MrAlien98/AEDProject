@@ -704,5 +704,23 @@ class MethodsGraphsTest {
 			assertEquals(fila4, d);
 			assertEquals(fila5, e);
 		}
+		
+		// Test prim for GraphByMatrix
+		@Test
+		public void testPrim() {
+
+			stageFive();
+
+			assertEquals(28, mG.prim(graphMatrix, new Vertex<Integer>(0)));
+		}
+		
+		//Test prim for GraphByLists
+		@Test
+		public void testPrimTwo() {
+			
+			stageSix();
+			
+			assertEquals(28, mG.prim(graphList, new Vertex<Integer>(0)));
+		}
 	
 }
