@@ -125,6 +125,7 @@ public class GraphByLists<T extends Comparable<T>, E extends Comparable<E>> impl
 	 * @return Returns a list with all edges that the two vertices given have
 	 *         between them.
 	 */
+	@SuppressWarnings("unchecked")
 	public ArrayList<Edge<E>> edgesBetween(T vertexA, T vertexB) {
 		ArrayList<Edge<E>> edgesBetween = new ArrayList<>();
 		int indexAux = getIndexVertex(vertexA);

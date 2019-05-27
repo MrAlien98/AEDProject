@@ -182,7 +182,7 @@ public class WarControl {
 
 		//Alberta
 		graph.addEdge(bPoints[21], bPoints[20], false, 2844, 0);
-		graph.addEdge(bPoints[21], bPoints[0], false, 3201, 0);
+		graph.addEdge(bPoints[21], bPoints[0], false, 3200, 0);
 		graph.addEdge(bPoints[21], bPoints[11], false,9965 , 0);
 
 		//Pretoria
@@ -260,7 +260,8 @@ public class WarControl {
 			Vertex<BombingPoint> a= path.get(i-1);
 			Vertex<BombingPoint> b= path.get(i);
 			
-			pathS +=a.toString() + " -- " + graph.edgesBetween(a.getValue(), b.getValue()) + " --> " + b.toString() + "\n" ;
+			pathS +=a.toString() + " --" +graph.edgesBetween(a.getValue(), b.getValue())+ "--> " + b.toString() + "\n" ;
+
 			
 			
 		}
@@ -287,7 +288,6 @@ public class WarControl {
 	 * @return the bombingPoint or null if the bPoint is not finded
 	 */
 	public BombingPoint findBombingPoint(String id) {
-		System.out.println(id);
 		for(int i=0;i<bPoints.length;i++) {
 			if(bPoints[i].getName().equalsIgnoreCase(id)){
 				return bPoints[i];

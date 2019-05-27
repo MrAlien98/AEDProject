@@ -168,7 +168,7 @@ public class Edge<E extends Comparable<E>> implements Comparable<Edge<E>> {
 	@Override
 	public String toString() {
 
-		return value + " - " + cost;
+		return ""+ cost;
 
 	}
 
