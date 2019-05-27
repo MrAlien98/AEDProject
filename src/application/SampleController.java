@@ -109,25 +109,25 @@ public class SampleController {
 		imgs.add(new Pair<ImageView, Boolean>(CiudadDeMexico,false));
     	imgs.add(new Pair<ImageView, Boolean>(Brasilia,false));
     	imgs.add(new Pair<ImageView, Boolean>(RiodeJaneiro,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Bogota, false));
-    	imgs.add(new Pair<ImageView, Boolean>(Alberta,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Ottawa,false));
-    	imgs.add(new Pair<ImageView, Boolean>(BuenosAires,false));
     	imgs.add(new Pair<ImageView, Boolean>(Moscu,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Astana,false));
     	imgs.add(new Pair<ImageView, Boolean>(Krasnoyarsk,false));
-    	imgs.add(new Pair<ImageView, Boolean>(UlanBator,false));
     	imgs.add(new Pair<ImageView, Boolean>(Pekin,false));
     	imgs.add(new Pair<ImageView, Boolean>(HongKong,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Camberra,false));
     	imgs.add(new Pair<ImageView, Boolean>(NewDelhi,false));
     	imgs.add(new Pair<ImageView, Boolean>(Teheran,false));
     	imgs.add(new Pair<ImageView, Boolean>(Riad,false));
+    	imgs.add(new Pair<ImageView, Boolean>(BuenosAires,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Astana,false));
+    	imgs.add(new Pair<ImageView, Boolean>(UlanBator,false));
     	imgs.add(new Pair<ImageView, Boolean>(Argel,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Camberra,false));
     	imgs.add(new Pair<ImageView, Boolean>(CiudadDelCabo,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Bloemfontein,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Pretoria,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Bogota, false));
     	imgs.add(new Pair<ImageView, Boolean>(Kinsasa,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Ottawa,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Alberta,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Pretoria,false));
+    	imgs.add(new Pair<ImageView, Boolean>(Bloemfontein,false));
     	
 		actions();
 	}

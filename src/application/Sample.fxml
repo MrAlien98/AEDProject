@@ -46,7 +46,7 @@
                   <Image url="@../images/bombPoint.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="Rio" fitHeight="16.0" fitWidth="17.0" layoutX="462.0" layoutY="567.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="RiodeJaneiro" fitHeight="16.0" fitWidth="17.0" layoutX="462.0" layoutY="567.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/bombPoint.png" />
                </image>
