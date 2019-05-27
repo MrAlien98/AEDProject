@@ -516,6 +516,99 @@ class MethodsGraphsTest {
 			assertEquals(vertex3.getValue(), mG.BFS(graphMatrix, vertex1).get(4).getValue());
 
 		}
+		
+		// Test Dijkstra for GraphByLists with the graph number one
+		@Test
+		public void testDijkstra() {
+			stageOne();
 
+			double v1 = 0.0;
+			double v2 = 5.0;
+			double v3 = 6.0;
+			double v4 = 4.0;
+			double v5 = 2.0;
+
+			Integer ve1 = 13;
+
+			Vertex<Integer> vert1 = new Vertex<>(ve1);
+
+			assertEquals(v1, mG.Dijkstra(graphList, vert1)[0]);
+			assertEquals(v2, mG.Dijkstra(graphList, vert1)[1]);
+			assertEquals(v3, mG.Dijkstra(graphList, vert1)[2]);
+			assertEquals(v4, mG.Dijkstra(graphList, vert1)[3]);
+			assertEquals(v5, mG.Dijkstra(graphList, vert1)[4]);
+
+		}
+
+		// Test Dijkstra for GraphByLists with the graph number two
+		@Test
+		public void testDijkstraTwo() {
+			stageThree();
+
+			double v1 = 0.0;
+			double v2 = 5.0;
+			double v3 = 6.0;
+			double v4 = 4.0;
+			double v5 = 2.0;
+
+			Integer ve1 = 13;
+
+			Vertex<Integer> vert1 = new Vertex<>(ve1);
+
+			assertEquals(v1, mG.Dijkstra(graphList, vert1)[0]);
+			assertEquals(v2, mG.Dijkstra(graphList, vert1)[1]);
+			assertEquals(v3, mG.Dijkstra(graphList, vert1)[2]);
+			assertEquals(v4, mG.Dijkstra(graphList, vert1)[3]);
+			assertEquals(v5, mG.Dijkstra(graphList, vert1)[4]);
+
+		}
+
+		// Test Dijkstra for GraphByMatrix with the graph number one
+		@Test
+		public void testDijkstraMatrix() {
+			stageTwo();
+
+			double v1 = 0.0;
+			double v2 = 5.0;
+			double v3 = 6.0;
+			double v4 = 4.0;
+			double v5 = 2.0;
+
+			Integer ve1 = 13;
+
+			Vertex<Integer> vert1 = new Vertex<>(ve1);
+
+			assertEquals(v1, mG.Dijkstra(graphMatrix, vert1)[0]);
+			assertEquals(v2, mG.Dijkstra(graphMatrix, vert1)[1]);
+			assertEquals(v3, mG.Dijkstra(graphMatrix, vert1)[2]);
+			assertEquals(v4, mG.Dijkstra(graphMatrix, vert1)[3]);
+			assertEquals(v5, mG.Dijkstra(graphMatrix, vert1)[4]);
+
+		}
+
+		// Test Dijkstra for GraphByMatrix with the graph number two
+		@Test
+		public void testDijkstraMatrixTwo() {
+			stageFour();
+
+			double v1 = 0.0;
+			double v2 = 5.0;
+			double v3 = 6.0;
+			double v4 = 4.0;
+			double v5 = 2.0;
+
+			Integer ve1 = 13;
+
+			Vertex<Integer> vert1 = new Vertex<>(ve1);
+
+			assertEquals(v1, mG.Dijkstra(graphMatrix, vert1)[0]);
+			assertEquals(v2, mG.Dijkstra(graphMatrix, vert1)[1]);
+			assertEquals(v3, mG.Dijkstra(graphMatrix, vert1)[2]);
+			assertEquals(v4, mG.Dijkstra(graphMatrix, vert1)[3]);
+			assertEquals(v5, mG.Dijkstra(graphMatrix, vert1)[4]);
+
+		}
+
+		
 	
 }
