@@ -148,7 +148,13 @@
                </image>
             </ImageView>
             <Label layoutX="44.0" layoutY="23.0" text="Start Bombing Point" textFill="WHITE" />
-            <Label layoutX="44.0" layoutY="54.0" text="End Bombing Point" textFill="WHITE" />
+            <Label layoutX="48.0" layoutY="54.0" text="End Bombing Point" textFill="WHITE" />
+            <ImageView fitHeight="18.0" fitWidth="31.0" layoutX="27.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bombedPoint.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="48.0" layoutY="82.0" text="Bombed Point" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>

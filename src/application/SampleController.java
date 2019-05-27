@@ -17,6 +17,7 @@ public class SampleController {
 	@FXML public final Image START_BOMBING=new Image("images/startBombingPoint.png");
 	@FXML public final Image END_BOMBING=new Image("images/endBombingPoint.png");
 	@FXML public final Image NORMAL_POINT=new Image("images/bombPoint.png");
+	@FXML public final Image BOMBED_POINT=new Image("images/bombedPoint.png");
 	
 	@FXML private ImageView imgMapa;
  	@FXML private ImageView  Bogota;
