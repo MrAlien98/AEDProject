@@ -27,9 +27,9 @@ class GraphByListsTest {
 	    	
 
 	    	String washington = new String("Washington");
-	    	String moscu = new String("Moscu");
+	    	String kansas = new String("Kansas");
 	    	
-	    	graph.addVertex(moscu);
+	    	graph.addVertex(kansas);
 	    	graph.addVertex(washington);
 	    
 	     }
@@ -41,12 +41,12 @@ class GraphByListsTest {
 	    	
 
 	    	String washington = new String("Washington");
-	    	String moscu = new String("Moscu");
+	    	String kansas = new String("Kansas");
 	    	
-	    	graph.addVertex(moscu);
+	    	graph.addVertex(kansas);
 	    	graph.addVertex(washington);
 	    
-	    	graph.addEdge(washington, moscu, false, 7812, 0);
+	    	graph.addEdge(washington, kansas, false, 328, 0);
 
 	    
 	     }
@@ -79,9 +79,9 @@ class GraphByListsTest {
 	    	
 	    
 	    	String washington = new String("Washington");
-	    	String moscu = new String("Moscu");
+	    	String kansas = new String("Kansas");
 	    
-	    	graph.addEdge(washington, moscu, false, 7812, 0);
+	    	graph.addEdge(washington, kansas, false, 328, 0);
 
 
 	        assertEquals(1, graph.numEdgesOfVertex(washington));
@@ -96,7 +96,7 @@ class GraphByListsTest {
 	    	
 	    	
 	    	
-	    	assertTrue(graph.isAdjacent("Washington", "Moscu"));
+	    	assertTrue(graph.isAdjacent("Washington", "Kansas"));
 	    }
 	    
 	    @Test 
