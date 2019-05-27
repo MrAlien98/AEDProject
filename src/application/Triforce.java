@@ -1,13 +1,15 @@
 package application;
 
-public class Pair<K, V> {
+public class Triforce<K, V, T> {
 
 	private K key;
 	private V value;
+	private T order;
 	
-	public Pair(K key, V value) {
+	public Triforce(K key, V value, T order) {
 		this.key=key;
 		this.value=value;
+		this.order=order;
 	}
 
 	public K getKey() {
@@ -24,6 +26,20 @@ public class Pair<K, V> {
 
 	public void setValue(V value) {
 		this.value = value;
+	}
+
+	/**
+	 * @return the order
+	 */
+	public T getOrder() {
+		return order;
+	}
+
+	/**
+	 * @param order the order to set
+	 */
+	public void setOrder(T order) {
+		this.order = order;
 	}
 	
 	

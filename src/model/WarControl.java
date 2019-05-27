@@ -196,10 +196,10 @@ public class WarControl {
 		
 		String pathS="";
 		
-		for (int i = 0; i < path.size(); i++) {
+		for (int i = 1; i < path.size(); i++) {
 			
-			Vertex<BombingPoint> a= path.get(i);
-			Vertex<BombingPoint> b= path.get(i +1);
+			Vertex<BombingPoint> a= path.get(i-1);
+			Vertex<BombingPoint> b= path.get(i);
 			
 			pathS +=a.toString() + " -- " + graph.edgesBetween(a.getValue(), b.getValue()) + " --> " + b.toString() + "\n" ;
 			

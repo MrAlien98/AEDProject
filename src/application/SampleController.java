@@ -59,7 +59,7 @@ public class SampleController {
     @FXML private Button bombEverything;
     @FXML private Button startBombing;
     
-    private ArrayList<Pair<ImageView, Boolean>> imgs;
+    private ArrayList<Triforce<ImageView, Boolean, Integer>> imgs;
     private ArrayList<ImageView> marked=new ArrayList<>();	
     
     private Timeline animation;
@@ -104,30 +104,30 @@ public class SampleController {
 		Tooltip.install( Kansas, new Tooltip("Kansas, EE.UU"));
 		
 		imgs=new ArrayList<>();
-		imgs.add(new Pair<ImageView, Boolean>(Washington,false));
-		imgs.add(new Pair<ImageView, Boolean>(Kansas,false));
-		imgs.add(new Pair<ImageView, Boolean>(CiudadDeMexico,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Brasilia,false));
-    	imgs.add(new Pair<ImageView, Boolean>(RiodeJaneiro,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Moscu,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Krasnoyarsk,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Pekin,false));
-    	imgs.add(new Pair<ImageView, Boolean>(HongKong,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Camberra,false));
-    	imgs.add(new Pair<ImageView, Boolean>(NewDelhi,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Teheran,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Riad,false));
-    	imgs.add(new Pair<ImageView, Boolean>(BuenosAires,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Astana,false));
-    	imgs.add(new Pair<ImageView, Boolean>(UlanBator,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Argel,false));
-    	imgs.add(new Pair<ImageView, Boolean>(CiudadDelCabo,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Bogota, false));
-    	imgs.add(new Pair<ImageView, Boolean>(Kinsasa,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Ottawa,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Alberta,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Pretoria,false));
-    	imgs.add(new Pair<ImageView, Boolean>(Bloemfontein,false));
+		imgs.add(new Triforce<ImageView, Boolean, Integer>(Washington,false, 0));
+		imgs.add(new Triforce<ImageView, Boolean, Integer>(Kansas,false, 0));
+		imgs.add(new Triforce<ImageView, Boolean, Integer>(CiudadDeMexico,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Brasilia,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(RiodeJaneiro,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Moscu,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Krasnoyarsk,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Pekin,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(HongKong,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Camberra,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(NewDelhi,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Teheran,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Riad,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(BuenosAires,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Astana,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(UlanBator,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Argel,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(CiudadDelCabo,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Bogota, false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Kinsasa,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Ottawa,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Alberta,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Pretoria,false, 0));
+    	imgs.add(new Triforce<ImageView, Boolean, Integer>(Bloemfontein,false, 0));
     	
 		actions();
 	}
@@ -157,6 +157,7 @@ public class SampleController {
 				if(imgs.get(i).getKey().getId().equalsIgnoreCase(img.getId())) {
 					imgs.get(i).getKey().setImage(END_BOMBING);
 					imgs.get(i).setValue(true);
+					imgs.get(i).setOrder(2);
 				}
 			}
 			drawPath();
@@ -165,6 +166,7 @@ public class SampleController {
 				if(imgs.get(i).getKey().getId().equalsIgnoreCase(img.getId())) {
 					imgs.get(i).getKey().setImage(START_BOMBING);
 					imgs.get(i).setValue(true);
+					imgs.get(i).setOrder(1);
 				}
 			}
 			img.setOnMouseClicked(e->nothingMethod());
@@ -178,19 +180,19 @@ public class SampleController {
 		ImageView point2=null;
 		for(int i=0;i<imgs.size();i++) {
 			if(imgs.get(i).getValue()==true) {
-				if(point1==null) {
+				if(imgs.get(i).getOrder()==1) {
 					point1=imgs.get(i).getKey();
-				}else if(point2==null) {
+				}else if(imgs.get(i).getOrder()==2) {
 					point2=imgs.get(i).getKey();
 				}
 			}
 		}
 		BombingPoint start=Main.getWar().findBombingPoint(point1.getId());
+		System.out.println("-----"+start.getName()+"-----");
 		BombingPoint end=Main.getWar().findBombingPoint(point2.getId());
+		System.out.println("-----"+end.getName()+"-----");
 		ArrayList<Vertex<BombingPoint>> b=Main.getWar().getPath(new Vertex<BombingPoint>(start), new Vertex<BombingPoint>(end));
-		for(Vertex<BombingPoint> a : b) {
-			System.out.println(a.getValue().getName());
-		}
+		System.out.println(Main.getWar().pathToString(new Vertex<BombingPoint>(start), new Vertex<BombingPoint>(end)));
 		drawPath(b);
 	}
 	
@@ -232,33 +234,21 @@ public class SampleController {
 	
 	public void moveAirPlane(ArrayList<ImageView> marked) {
 		airPlane.setVisible(true);
-		airPlane.setLayoutX(marked.get(marked.size()-1).getLayoutX());
-		airPlane.setLayoutY(marked.get(marked.size()-1).getLayoutY());
+		airPlane.setLayoutX(marked.get(0).getLayoutX());
+		airPlane.setLayoutY(marked.get(0).getLayoutY());
 		for(int i=1;i<marked.size();i++) {
 			ImageView imgP1=marked.get(i-1);
 			ImageView imgP2=marked.get(i);
+			System.out.println("de "+imgP1.getId()+" a "+imgP2.getId());
 			dx=(imgP2.getLayoutX()-imgP1.getLayoutX());
 			dy=(imgP2.getLayoutY()-imgP1.getLayoutY());
 			double change=MCD(dx,dy);
 			dx=dx/change;
 			dy=dy/change;
-			animation = new Timeline(new KeyFrame(Duration.millis(3000), f-> {
-				System.out.println("entro");
-				if(airPlane.getLayoutX()<imgP2.getLayoutX()) {
-					airPlane.setLayoutX(airPlane.getLayoutX()+dx);
-				}
-				if(airPlane.getLayoutX()>imgP2.getLayoutX()) {
-					airPlane.setLayoutX(airPlane.getLayoutX()-dx);
-				}
-				if(airPlane.getLayoutY()>imgP2.getLayoutY()) {
-					airPlane.setLayoutY(airPlane.getLayoutY()+dy);
-				}
-				if(airPlane.getLayoutY()<imgP2.getLayoutY()) {
-					airPlane.setLayoutY(airPlane.getLayoutY()-dy);
-				}
-				if(airPlane.getLayoutY()==imgP2.getLayoutY() && airPlane.getLayoutX()==imgP2.getLayoutX()) {
-					animation.pause();
-				}
+			animation = new Timeline(new KeyFrame(Duration.millis(1000), f-> {
+//				if() {
+//					
+//				}
 			}));
 			animation.setCycleCount(Timeline.INDEFINITE);
 			animation.play();
