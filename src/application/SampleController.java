@@ -216,7 +216,7 @@ public class SampleController {
 	}
 	
 	public void bombEverything() {
-		int[] ax=Main.getWar().gethPathKruskal();
+		int[] ax=Main.getWar().gethPathPrim();
 		
 	}
 	
