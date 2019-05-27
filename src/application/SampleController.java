@@ -188,9 +188,7 @@ public class SampleController {
 			}
 		}
 		BombingPoint start=Main.getWar().findBombingPoint(point1.getId());
-		System.out.println("-----"+start.getName()+"-----");
 		BombingPoint end=Main.getWar().findBombingPoint(point2.getId());
-		System.out.println("-----"+end.getName()+"-----");
 		ArrayList<Vertex<BombingPoint>> b=Main.getWar().getPath(new Vertex<BombingPoint>(start), new Vertex<BombingPoint>(end));
 		System.out.println(Main.getWar().pathToString(new Vertex<BombingPoint>(start), new Vertex<BombingPoint>(end)));
 		drawPath(b);
