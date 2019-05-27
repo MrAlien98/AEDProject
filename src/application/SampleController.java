@@ -197,6 +197,7 @@ public class SampleController {
 	}
 	
 	public void drawPath(ArrayList<Vertex<BombingPoint>> arr) {
+		marked=new ArrayList<ImageView>();
 		for(int i=0;i<arr.size();i++) {
 			for(int j=0;j<imgs.size();j++) {
 				if(imgs.get(j).getKey().getId().equalsIgnoreCase(arr.get(i).getValue().getName())) {
@@ -233,26 +234,26 @@ public class SampleController {
 	}
 	
 	public void moveAirPlane(ArrayList<ImageView> marked) {
-		airPlane.setVisible(true);
-		airPlane.setLayoutX(marked.get(0).getLayoutX());
-		airPlane.setLayoutY(marked.get(0).getLayoutY());
-		for(int i=1;i<marked.size();i++) {
-			ImageView imgP1=marked.get(i-1);
-			ImageView imgP2=marked.get(i);
-			System.out.println("de "+imgP1.getId()+" a "+imgP2.getId());
-			dx=(imgP2.getLayoutX()-imgP1.getLayoutX());
-			dy=(imgP2.getLayoutY()-imgP1.getLayoutY());
-			double change=MCD(dx,dy);
-			dx=dx/change;
-			dy=dy/change;
-			animation = new Timeline(new KeyFrame(Duration.millis(1000), f-> {
-//				if() {
-//					
-//				}
-			}));
-			animation.setCycleCount(Timeline.INDEFINITE);
-			animation.play();
-		}
+//		airPlane.setVisible(true);
+//		airPlane.setLayoutX(marked.get(0).getLayoutX());
+//		airPlane.setLayoutY(marked.get(0).getLayoutY());
+//		for(int i=1;i<marked.size();i++) {
+//			ImageView imgP1=marked.get(i-1);
+//			ImageView imgP2=marked.get(i);
+//			System.out.println("de "+imgP1.getId()+" a "+imgP2.getId());
+//			dx=(imgP2.getLayoutX()-imgP1.getLayoutX());
+//			dy=(imgP2.getLayoutY()-imgP1.getLayoutY());
+//			double change=MCD(dx,dy);
+//			dx=dx/change;
+//			dy=dy/change;
+//			animation = new Timeline(new KeyFrame(Duration.millis(1000), f-> {
+////				if() {
+////					
+////				}
+//			}));
+//			animation.setCycleCount(Timeline.INDEFINITE);
+//			animation.play();
+//		}
 	}
 	
 	public boolean isBomber1() {
