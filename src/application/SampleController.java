@@ -44,17 +44,16 @@ public class SampleController {
     @FXML private ImageView  Pretoria;
     @FXML private ImageView  Kinsasa;
 	
+    @FXML private ImageView airPlane;
+    
     @FXML private Button butClear;
     
     private ArrayList<Pair<ImageView, Boolean>> imgs;
     	
     private boolean bomber1;
     private boolean bomber2;
-    
-    private Line stroke;
-    
+        
     public SampleController() {
-    	stroke=new Line();
     	bomber1=false;
     	bomber2=false;
     }
@@ -117,12 +116,7 @@ public class SampleController {
 	public void actions() {
 		butClear.setOnAction(e->{
 			actions();
-//			try {
-				Main.getRoot().getChildren().removeIf(h -> (h instanceof Line));
-//			}catch(Exception g) {
-//				nothingMethod();
-//			}
-			Main.getRoot().getChildren().remove(stroke);
+			Main.getRoot().getChildren().removeIf(h -> (h instanceof Line));
 			bomber1=false;
 			bomber2=false;
 		});
@@ -178,10 +172,6 @@ public class SampleController {
 			System.out.println(a.getValue().getName());
 		}
 		drawPath(b);
-//		stroke.setStartX(point1.getLayoutX());	stroke.setStartY(point1.getLayoutY());
-//		stroke.setEndX(point2.getLayoutX());	stroke.setEndY(point2.getLayoutY());
-//		stroke.setFill(Color.DARKGREY);
-//		Main.getRoot().getChildren().add(stroke);
 	}
 	
 	public void drawPath(ArrayList<Vertex<BombingPoint>> arr) {
@@ -194,10 +184,11 @@ public class SampleController {
 			}
 		}
 		for(int i=1;i<marked.size();i++) {
-			Line linea=new Line();
-			linea.setStartX(marked.get(i-1).getLayoutX());	linea.setStartY(marked.get(i-1).getLayoutY());
-			linea.setEndX(marked.get(i).getLayoutX());	linea.setEndY(marked.get(i).getLayoutY());
-			Main.getRoot().getChildren().add(linea);
+			Line line=new Line();
+			line.setStyle("-fx-stroke-dash-array: 2 12 12 2;");
+			line.setStartX(marked.get(i-1).getLayoutX());	line.setStartY(marked.get(i-1).getLayoutY());
+			line.setEndX(marked.get(i).getLayoutX());	line.setEndY(marked.get(i).getLayoutY());
+			Main.getRoot().getChildren().add(line);
 		}
 	}
 	
