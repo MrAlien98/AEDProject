@@ -11,7 +11,7 @@ import dataStructure.GraphByMatrix;
 
 class GraphByMatrixTest {
 
-GraphByMatrix<String,String>  graph;
+GraphByMatrix<String,Integer>  graph;
     
 	 
 	
@@ -28,11 +28,11 @@ GraphByMatrix<String,String>  graph;
     	graph = new GraphByMatrix<>(3);
     	
 
-    	String bogota = new String("bogota");
-    	String cali = new String("cali");
+    	String washington = new String("Washington");
+    	String kansas = new String("Kansas");
     	
-    	graph.addVertex(cali);
-    	graph.addVertex(bogota);
+    	graph.addVertex(washington);
+    	graph.addVertex(kansas);
     
     }
     
@@ -42,17 +42,13 @@ GraphByMatrix<String,String>  graph;
     	graph = new GraphByMatrix<>(3);
     	
 
-    	String bogota = new String("bogota");
-    	String cali = new String("cali");
+    	String washington = new String("Washington");
+    	String kansas = new String("Kansas");
     	
-    	graph.addVertex(cali);
-    	graph.addVertex(bogota);
+    	graph.addVertex(washington);
+    	graph.addVertex(kansas);
     	
-     	String troncal = new String("troncal");
-    	String panamericana= new String("panamericana");
-
-    	graph.addEdge(bogota, cali, true, 1333, troncal);
-    	graph.addEdge(bogota, cali, true, 1000, panamericana);
+    	graph.addEdge(washington, kansas, false, 328, 0);
     
     }
     
@@ -71,8 +67,8 @@ GraphByMatrix<String,String>  graph;
     	
     	stageOne();
     	
-    	String vertexA = new String("Cartagena");
-    	String vertexB = new String("Cali");
+    	String vertexA = new String("Washington");
+    	String vertexB = new String("Ottawa");
     	String vertexC = new String("Bogota");
     	
     	graph.addVertex(vertexA);
@@ -91,20 +87,12 @@ GraphByMatrix<String,String>  graph;
     	stageTwo();
     	
     
-    	String bogota = new String("bogota");
-    	String cali = new String("cali");
-    	String troncal = new String("troncal");
-    	String panamericana= new String("panamericana");
-
+    	String washington = new String("Washington");
+    	String kansas = new String("Kansas");
     	
+    	graph.addEdge(washington, kansas, false, 328, 0);
 
-    	//graph.addEdge(bogota, cali, true, troncal.getCost(), troncal);
-   
-
-    	graph.addEdge(bogota, cali, true, 1333, troncal);
-    	graph.addEdge(bogota, cali, true, 1000, panamericana);
-
-        assertEquals(2, graph.numEdgesOfVertex(bogota));
+        assertEquals(1, graph.numEdgesOfVertex(washington));
     }
     
     @Test
@@ -112,9 +100,9 @@ GraphByMatrix<String,String>  graph;
     	
     	stageThree(); 
     	
-    	graph.removeEdge("bogota", "cali", true, 1000);
+    	graph.removeEdge("Washington", "Kansas", false, 328);
     	
-        assertNotEquals(2, graph.numEdgesOfVertex("bogota"));
+        assertNotEquals(1, graph.numEdgesOfVertex("Washington"));
 
     	
     }
@@ -126,7 +114,7 @@ GraphByMatrix<String,String>  graph;
     	
     	
     	
-    	assertTrue(graph.isAdjacent("bogota", "cali"));
+    	assertTrue(graph.isAdjacent("Washington", "Kansas"));
     }
     
     @Test 
@@ -134,7 +122,7 @@ GraphByMatrix<String,String>  graph;
     	
     	stageThree();
     	
-    	assertEquals(2, graph.numEdgesOfVertex("bogota"));
+    	assertEquals(1, graph.numEdgesOfVertex("Washington"));
     }
 
 }
