@@ -609,6 +609,100 @@ class MethodsGraphsTest {
 
 		}
 
-		
+		// Test floydWarshall for GraphByLists with the graph number one
+		@Test
+		public void testFloydWarshall() {
+			stageOne();
+
+			String fila1 = (Arrays.toString(mG.floydWarshall(graphList)[0]));
+			String fila2 = (Arrays.toString(mG.floydWarshall(graphList)[1]));
+			String fila3 = (Arrays.toString(mG.floydWarshall(graphList)[2]));
+			String fila4 = (Arrays.toString(mG.floydWarshall(graphList)[3]));
+			String fila5 = (Arrays.toString(mG.floydWarshall(graphList)[4]));
+
+			String a = Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(13)));
+			String b = Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(8)));
+			String c = Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(9)));
+			String d = Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(21)));
+			String e = Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(5)));
+
+			assertEquals(fila1, a);
+			assertEquals(fila2, b);
+			assertEquals(fila3, c);
+			assertEquals(fila4, d);
+			assertEquals(fila5, e);
+		}
+
+		// Test floydWarshall for GraphByLists with the graph number two
+		@Test
+		public void testFloydWarshallTwo() {
+			stageThree();
+
+			String fila1 = (Arrays.toString(mG.floydWarshall(graphList)[0]));
+			String fila2 = (Arrays.toString(mG.floydWarshall(graphList)[1]));
+			String fila3 = (Arrays.toString(mG.floydWarshall(graphList)[2]));
+			String fila4 = (Arrays.toString(mG.floydWarshall(graphList)[3]));
+			String fila5 = (Arrays.toString(mG.floydWarshall(graphList)[4]));
+
+			String a = Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(13)));
+			String b = Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(8)));
+			String c = Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(9)));
+			String d = Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(21)));
+			String e = Arrays.toString(mG.Dijkstra(graphList, new Vertex<Integer>(5)));
+
+			assertEquals(fila1, a);
+			assertEquals(fila2, b);
+			assertEquals(fila3, c);
+			assertEquals(fila4, d);
+			assertEquals(fila5, e);
+		}
+
+		// Test floydWarshall for GraphByMatrix with the graph number one
+		@Test
+		public void testFloydWarshallMatrix() {
+			stageTwo();
+
+			String fila1 = (Arrays.toString(mG.floydWarshall(graphMatrix)[0]));
+			String fila2 = (Arrays.toString(mG.floydWarshall(graphMatrix)[1]));
+			String fila3 = (Arrays.toString(mG.floydWarshall(graphMatrix)[2]));
+			String fila4 = (Arrays.toString(mG.floydWarshall(graphMatrix)[3]));
+			String fila5 = (Arrays.toString(mG.floydWarshall(graphMatrix)[4]));
+
+			String a = Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(13)));
+			String b = Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(8)));
+			String c = Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(9)));
+			String d = Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(21)));
+			String e = Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(5)));
+
+			assertEquals(fila1, a);
+			assertEquals(fila2, b);
+			assertEquals(fila3, c);
+			assertEquals(fila4, d);
+			assertEquals(fila5, e);
+		}
+
+		// Test floydWarshall for GraphByMatrix with the graph number one
+		@Test
+		public void testFloydWarshallMatrixTwo() {
+			stageFour();
+
+			String fila1 = (Arrays.toString(mG.floydWarshall(graphMatrix)[0]));
+			String fila2 = (Arrays.toString(mG.floydWarshall(graphMatrix)[1]));
+			String fila3 = (Arrays.toString(mG.floydWarshall(graphMatrix)[2]));
+			String fila4 = (Arrays.toString(mG.floydWarshall(graphMatrix)[3]));
+			String fila5 = (Arrays.toString(mG.floydWarshall(graphMatrix)[4]));
+
+			String a = Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(13)));
+			String b = Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(8)));
+			String c = Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(9)));
+			String d = Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(21)));
+			String e = Arrays.toString(mG.Dijkstra(graphMatrix, new Vertex<Integer>(5)));
+
+			assertEquals(fila1, a);
+			assertEquals(fila2, b);
+			assertEquals(fila3, c);
+			assertEquals(fila4, d);
+			assertEquals(fila5, e);
+		}
 	
 }
