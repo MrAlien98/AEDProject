@@ -218,11 +218,8 @@ public class SampleController {
 	
 	public void bombEverything() {
 		int[] ax=Main.getWar().gethPathPrim();
-		for(int a : ax) {
-			System.out.println(a);
-		}
 		ArrayList<ImageView> path=new ArrayList<>();
-		for(int i=0;i<ax.length;i++) {
+		for(int i=1;i<ax.length;i++) {
 			path.add(imgs.get(ax[i]).getKey());
 		}
 		for(int i=1;i<path.size();i++) {
@@ -244,6 +241,8 @@ public class SampleController {
 		return res;
 	}
 	
+//	public void b
+	
 	public void moveAirPlane(ArrayList<ImageView> marked) {
 		for(int i=1;i<marked.size();i++) {
 			System.out.println(marked.get(i-1).getId());
@@ -259,21 +258,18 @@ public class SampleController {
 			dx=Math.abs(dx/change);
 			dy=Math.abs(dy/change);
 			animation = new Timeline(new KeyFrame(Duration.millis(100), f-> {
-				if(airPlane.getLayoutX()<imgP2.getLayoutX() && airPlane.getLayoutY()<imgP2.getLayoutY()) {
-					airPlane.setLayoutX(airPlane.getLayoutX()+dy/dx);
-					airPlane.setLayoutY(airPlane.getLayoutY()+dy/dx);
+				if(airPlane.getLayoutX()<imgP2.getLayoutX()) {
+					airPlane.setLayoutX(airPlane.getLayoutX()+dx);
 				}
-				if(airPlane.getLayoutX()<imgP2.getLayoutX() && airPlane.getLayoutY()>imgP2.getLayoutY()) {
-					airPlane.setLayoutX(airPlane.getLayoutX()+dy/dx);
-					airPlane.setLayoutY(airPlane.getLayoutY()-dy/dx);
+				if(airPlane.getLayoutX()>imgP2.getLayoutX()) {
+					airPlane.setLayoutX(airPlane.getLayoutX()-dx);
 				}
-				if(airPlane.getLayoutX()>imgP2.getLayoutX() && airPlane.getLayoutY()>imgP2.getLayoutY()) {
-					airPlane.setLayoutX(airPlane.getLayoutX()-dy/dx);
-					airPlane.setLayoutY(airPlane.getLayoutY()-dy/dx);
+				
+				if(airPlane.getLayoutY()<imgP2.getLayoutY()) {
+					airPlane.setLayoutY(airPlane.getLayoutY()+dy);
 				}
-				if(airPlane.getLayoutX()>imgP2.getLayoutX() && airPlane.getLayoutY()<imgP2.getLayoutY()) {
-					airPlane.setLayoutX(airPlane.getLayoutX()-dy/dx);
-					airPlane.setLayoutY(airPlane.getLayoutY()+dy/dx);
+				if(airPlane.getLayoutY()>imgP2.getLayoutY()) {
+					airPlane.setLayoutY(airPlane.getLayoutX()-dy);
 				}
 			}));
 			animation.setCycleCount(Timeline.INDEFINITE);
