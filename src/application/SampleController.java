@@ -1,5 +1,8 @@
 package application;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 import dataStructure.Vertex;
@@ -12,20 +15,58 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
+import javazoom.jl.player.Player;
 import model.BombingPoint;
 import queue.Queue;
 
 public class SampleController {
 	
+	class Hilo extends Thread{
+		File ruta;		
+		public Hilo(File ruta) {this.ruta=ruta;}
+		
+		@Override
+		public void run() {
+			try {		
+				BufferedInputStream bis=new BufferedInputStream(new FileInputStream(ruta));
+				Player player=new Player(bis);
+				player.play();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}	
+		public void setRuta(File ruta) {
+			this.ruta=ruta;
+		}
+		public String getRuta() {
+			return ruta.getPath();
+		}
+	}
+	
+	class Hilo2 extends Thread{
+		Queue<ImageView> q;
+		public Hilo2(Queue<ImageView> q) {
+			this.q=q;
+		}
+		
+		@Override
+		public void run() {
+			try {
+				while(!q.isEmpty()) {
+					q.poll().setImage(BOMBED_POINT);
+					sleep(1000);
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	@FXML public final Image START_BOMBING=new Image("images/startBombingPoint.png");
 	@FXML public final Image END_BOMBING=new Image("images/endBombingPoint.png");
 	@FXML public final Image NORMAL_POINT=new Image("images/bombPoint.png");
-	@FXML public final Image BOMBED_POINT=new Image("images/bombedPoint.png");
-	@FXML public final Image PLANE_1=new Image("images/plane1.png");
-	@FXML public final Image PLANE_2=new Image("images/plane2.png");
-	@FXML public final Image PLANE_3=new Image("images/plane3.png");
-	@FXML public final Image PLANE_4=new Image("images/plane4.png");
-	
+	@FXML public final Image BOMBED_POINT=new Image("images/bombedPoint.png");	
 	
 	@FXML private ImageView imgMapa;
  	@FXML private ImageView  Bogota;
@@ -66,9 +107,8 @@ public class SampleController {
     
     private boolean bomber1;
     private boolean bomber2;
-        
-    private double dx;
-    private double dy;
+    
+    private Hilo hilo; 
     
     public SampleController() {
     	bomber1=false;
@@ -77,6 +117,8 @@ public class SampleController {
 
 	public void initialize() {	
 		airPlane.setVisible(false);
+		
+		hilo=new Hilo(new File("src/music/Fireball project.mp3"));
 		
 		Tooltip.install( Bogota, new Tooltip("Bogota, Colombia"));
 		Tooltip.install( Alberta, new Tooltip("Alberta, Canada"));
@@ -139,7 +181,7 @@ public class SampleController {
 			bomber1=false;
 			bomber2=false;
 		});
-		startBombing.setOnAction(e-> changeImages(marked));
+		startBombing.setOnAction(e->changeImages(marked));
 		bombEverything.setOnAction(e-> bombEverything());
 		for(int i=0;i<imgs.size();i++) {
 			final int n=i;
@@ -154,11 +196,13 @@ public class SampleController {
 		for(ImageView a : img) {
 			q.offer(a);
 		}
-		animation =new Timeline(new KeyFrame(Duration.millis(1000), f-> {
-			q.poll().setImage(BOMBED_POINT);
-		}));
-		animation.setCycleCount(Timeline.INDEFINITE);
-		animation.play();
+		Hilo2 hilo2=new Hilo2(q);
+		hilo2.start();
+		playMusic();
+	}
+	
+	public void playMusic() {
+		hilo.start();
 	}
 	
 	public void changeImages(ImageView img) {
