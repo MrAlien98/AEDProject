@@ -1,5 +1,14 @@
 package application;
 
+/**
+ * Class needed to make a 3 par element to the ArrayList on SampleController
+ * 
+ * @author c Victor Mora
+ *
+ * @param <K>
+ * @param <V>
+ * @param <T>
+ */
 public class Triforce<K, V, T> {
 
 	private K key;

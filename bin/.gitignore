@@ -1,2 +1,10 @@
 /application/
+/docs/
+/dataStructure/
+/exceptions/
+/images/
+/model/
+/music/
+/queue/
+/test/
 /threads/
