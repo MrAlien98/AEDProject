@@ -1,11 +1,8 @@
 package application;
 
-import java.io.File;
 import java.util.ArrayList;
-
 import dataStructure.Vertex;
 import exceptions.UnselectedPointException;
-import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -15,11 +12,10 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
-import javafx.util.Duration;
 import model.BombingPoint;
 import queue.Queue;
 import threads.ImageThread;
-import threads.MusicThread;
+//import threads.MusicThread;
 
 /**
  * Controller class for the GUI of the AED final project
@@ -35,8 +31,6 @@ public class SampleController {
 	@FXML public final Image END_BOMBING=new Image("images/endBombingPoint.png");
 	@FXML public final Image NORMAL_POINT=new Image("images/bombPoint.png");
 	@FXML public final Image BOMBED_POINT=new Image("images/bombedPoint.png");
-	@FXML public final Image VOLUME_ON=new Image("images/vol_on.png");
-	@FXML public final Image VOLUME_OFF=new Image("images/vol_off.png");
 	
 	/**
 	 * Atributes on the SampleController class
@@ -66,9 +60,7 @@ public class SampleController {
     @FXML private ImageView Bloemfontein;
     @FXML private ImageView Pretoria;
     @FXML private ImageView Kinsasa;
-    
-    @FXML private ImageView imgVolume;
-    
+        
     @FXML private Button butClear;
     @FXML private Button bombEverything;
     @FXML private Button startBombing;
@@ -78,8 +70,6 @@ public class SampleController {
     
     private boolean bomber1;
     private boolean bomber2;
-    
-    private MusicThread musicThread; 
     
     private Timeline animation;
     
@@ -94,10 +84,7 @@ public class SampleController {
     /**
      * Oranizes every element in the SampleController class  
      */
-	public void initialize() {			
-		
-		musicThread=new MusicThread(new File("src/music/Fireball project.mp3"));
-		
+	public void initialize() {		
 		Tooltip.install( Bogota, new Tooltip("Bogota, Colombia"));
 		Tooltip.install( Alberta, new Tooltip("Alberta, Canada"));
 		Tooltip.install( Ottawa, new Tooltip("Ottawa, Canada"));
@@ -163,16 +150,6 @@ public class SampleController {
 			bomber2=false;
 		});
 		
-		imgVolume.setOnMouseClicked(e->{
-			if(imgVolume.getImage().equals(VOLUME_ON)) {
-				imgVolume.setImage(VOLUME_OFF);
-				musicThread.setOn(false);
-			}else {
-				imgVolume.setImage(VOLUME_ON);
-				musicThread.setOn(true);
-			}
-		});
-		
 		startBombing.setOnAction(e->{
 			try{
 				changeImages(marked);
@@ -212,11 +189,6 @@ public class SampleController {
 			}
 			ImageThread t2=new ImageThread(q, BOMBED_POINT);
 			t2.start();
-			if(musicThread.isAlive()) {
-				
-			}else if(musicThread.isOn()) {
-				musicThread.start();
-			}
 		}
 	}
 	

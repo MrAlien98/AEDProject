@@ -154,11 +154,6 @@
                </image>
             </ImageView>
             <Label layoutX="48.0" layoutY="82.0" text="Bombed Point" textFill="WHITE" />
-            <ImageView fx:id="imgVolume" fitHeight="25.0" fitWidth="30.0" layoutX="1240.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/vol_on.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
    </center>
