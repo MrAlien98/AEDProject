@@ -6,10 +6,7 @@ import dataStructure.*;
 /**
  * This class represents the warControl that will lead the complete 
  * destruction of the world as we knows  
- * 
- * 
- * 
- * 
+ * @author Brayan Garces
  */
 public class WarControl {
 
@@ -276,10 +273,8 @@ public class WarControl {
 		
 		MethodsGraphs<BombingPoint, Integer> meth= new MethodsGraphs<>();
 		
-		ArrayList<Vertex<BombingPoint>> path= new ArrayList<>();
-		
 		int[] pathIndex= meth.primP(graph, new Vertex<>(bPoints[0])).getPath();
-//		int[] pathIndex= meth.kruskal(graph);
+		
 		return pathIndex;
 	}
 	/**

@@ -7,7 +7,12 @@ import org.junit.jupiter.api.Test;
 
 import dataStructure.GraphByLists;
 
-class GraphByListsTest {
+/**
+ * Class that test methods from the GraphByList class 
+ * @author Julian Brito
+ *
+ */
+public class GraphByListsTest {
 
 		
 		  GraphByLists<String,Integer> graph;

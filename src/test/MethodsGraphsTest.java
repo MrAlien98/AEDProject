@@ -12,6 +12,11 @@ import dataStructure.GraphByMatrix;
 import dataStructure.MethodsGraphs;
 import dataStructure.Vertex;
 
+/**
+ * Class that test methods from the MethodsGraphs class 
+ * @author Julian Brito
+ *
+ */
 class MethodsGraphsTest {
 
 	GraphByLists<Integer, Integer> graphList;

@@ -7,7 +7,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import model.WarControl;
 
-
+/**
+ * Main class to the AED final project
+ * @author Victor Mora
+ */
 public class Main extends Application {
 	
 	public static BorderPane root = new BorderPane();

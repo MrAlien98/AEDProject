@@ -9,7 +9,12 @@ import org.junit.jupiter.api.Test;
 
 import dataStructure.GraphByMatrix;
 
-class GraphByMatrixTest {
+/**
+ * Class that test methods from the GraphByMatrix class 
+ * @author Julian Brito
+ *
+ */
+public class GraphByMatrixTest {
 
 GraphByMatrix<String,Integer>  graph;
     

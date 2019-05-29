@@ -1,100 +1,73 @@
 package application;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 
 import dataStructure.Vertex;
+import exceptions.UnselectedPointException;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
-import javazoom.jl.player.Player;
 import model.BombingPoint;
 import queue.Queue;
+import threads.ImageThread;
+import threads.MusicThread;
 
+/**
+ * Controller class for the GUI of the AED final project
+ * @author Victor Mora
+ *
+ */
 public class SampleController {
 	
-	class Hilo extends Thread{
-		File ruta;		
-		public Hilo(File ruta) {this.ruta=ruta;}
-		
-		@Override
-		public void run() {
-			try {		
-				BufferedInputStream bis=new BufferedInputStream(new FileInputStream(ruta));
-				Player player=new Player(bis);
-				player.play();
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}	
-		public void setRuta(File ruta) {
-			this.ruta=ruta;
-		}
-		public String getRuta() {
-			return ruta.getPath();
-		}
-	}
-	
-	class Hilo2 extends Thread{
-		Queue<ImageView> q;
-		public Hilo2(Queue<ImageView> q) {
-			this.q=q;
-		}
-		
-		@Override
-		public void run() {
-			try {
-				while(!q.isEmpty()) {
-					q.poll().setImage(BOMBED_POINT);
-					sleep(1000);
-				}
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-	}
-	
+	/**
+	 * Constants on the SampleController class 
+	 */
 	@FXML public final Image START_BOMBING=new Image("images/startBombingPoint.png");
 	@FXML public final Image END_BOMBING=new Image("images/endBombingPoint.png");
 	@FXML public final Image NORMAL_POINT=new Image("images/bombPoint.png");
-	@FXML public final Image BOMBED_POINT=new Image("images/bombedPoint.png");	
+	@FXML public final Image BOMBED_POINT=new Image("images/bombedPoint.png");
+	@FXML public final Image VOLUME_ON=new Image("images/vol_on.png");
+	@FXML public final Image VOLUME_OFF=new Image("images/vol_off.png");
 	
-	@FXML private ImageView imgMapa;
- 	@FXML private ImageView  Bogota;
- 	@FXML private ImageView  Kansas;
-    @FXML private ImageView  Alberta;
-    @FXML private ImageView  Ottawa;
-    @FXML private ImageView  Washington;
-    @FXML private ImageView  CiudadDeMexico;
-    @FXML private ImageView  Brasilia;
-    @FXML private ImageView  RiodeJaneiro;
-    @FXML private ImageView  BuenosAires;
-    @FXML private ImageView  Moscu;
-    @FXML private ImageView  Astana;
-    @FXML private ImageView  Krasnoyarsk;
-    @FXML private ImageView  UlanBator;
-    @FXML private ImageView  Pekin;
-    @FXML private ImageView  HongKong;
-    @FXML private ImageView  NewDelhi;
-    @FXML private ImageView  Teheran;
-    @FXML private ImageView  Riad;
-    @FXML private ImageView  Argel;
-    @FXML private ImageView  Camberra;
-    @FXML private ImageView  CiudadDelCabo;
-    @FXML private ImageView  Bloemfontein;
-    @FXML private ImageView  Pretoria;
-    @FXML private ImageView  Kinsasa;
-	
-    @FXML private ImageView airPlane;
+	/**
+	 * Atributes on the SampleController class
+	 */
+	@FXML private ImageView mgMapa;
+ 	@FXML private ImageView Bogota;
+ 	@FXML private ImageView Kansas;
+    @FXML private ImageView Alberta;
+    @FXML private ImageView Ottawa;
+    @FXML private ImageView Washington;
+    @FXML private ImageView CiudadDeMexico;
+    @FXML private ImageView Brasilia;
+    @FXML private ImageView RiodeJaneiro;
+    @FXML private ImageView BuenosAires;
+    @FXML private ImageView Moscu;
+    @FXML private ImageView Astana;
+    @FXML private ImageView Krasnoyarsk;
+    @FXML private ImageView UlanBator;
+    @FXML private ImageView Pekin;
+    @FXML private ImageView HongKong;
+    @FXML private ImageView NewDelhi;
+    @FXML private ImageView Teheran;
+    @FXML private ImageView Riad;
+    @FXML private ImageView Argel;
+    @FXML private ImageView Camberra;
+    @FXML private ImageView CiudadDelCabo;
+    @FXML private ImageView Bloemfontein;
+    @FXML private ImageView Pretoria;
+    @FXML private ImageView Kinsasa;
+    
+    @FXML private ImageView imgVolume;
     
     @FXML private Button butClear;
     @FXML private Button bombEverything;
@@ -103,22 +76,27 @@ public class SampleController {
     private ArrayList<Triforce<ImageView, Boolean, Integer>> imgs;
     private ArrayList<ImageView> marked=new ArrayList<>();	
     
-    private Timeline animation;
-    
     private boolean bomber1;
     private boolean bomber2;
     
-    private Hilo hilo; 
+    private MusicThread musicThread; 
     
+    private Timeline animation;
+    
+    /**
+     * SampleController class constructor
+     */
     public SampleController() {
     	bomber1=false;
     	bomber2=false;
     }
 
-	public void initialize() {	
-		airPlane.setVisible(false);
+    /**
+     * Oranizes every element in the SampleController class  
+     */
+	public void initialize() {			
 		
-		hilo=new Hilo(new File("src/music/Fireball project.mp3"));
+		musicThread=new MusicThread(new File("src/music/Fireball project.mp3"));
 		
 		Tooltip.install( Bogota, new Tooltip("Bogota, Colombia"));
 		Tooltip.install( Alberta, new Tooltip("Alberta, Canada"));
@@ -174,6 +152,9 @@ public class SampleController {
 		actions();
 	}
 	
+	/**
+	 * Initializes the action of every element on the class SampleController
+	 */
 	public void actions() {
 		butClear.setOnAction(e->{
 			actions();
@@ -181,8 +162,32 @@ public class SampleController {
 			bomber1=false;
 			bomber2=false;
 		});
-		startBombing.setOnAction(e->changeImages(marked));
+		
+		imgVolume.setOnMouseClicked(e->{
+			if(imgVolume.getImage().equals(VOLUME_ON)) {
+				imgVolume.setImage(VOLUME_OFF);
+				musicThread.setOn(false);
+			}else {
+				imgVolume.setImage(VOLUME_ON);
+				musicThread.setOn(true);
+			}
+		});
+		
+		startBombing.setOnAction(e->{
+			try{
+				changeImages(marked);
+			}catch(Exception f) {
+				Alert exception=new Alert(AlertType.ERROR);
+				exception.setContentText(f.getMessage());
+				exception.setHeaderText(null);
+				exception.setTitle("An Exception Has Ocurred");
+				exception.showAndWait();
+				f.printStackTrace();
+			}
+		});
+		
 		bombEverything.setOnAction(e-> bombEverything());
+		
 		for(int i=0;i<imgs.size();i++) {
 			final int n=i;
 			imgs.get(i).getKey().setImage(NORMAL_POINT);
@@ -191,25 +196,57 @@ public class SampleController {
 		}
 	}
 	
-	public void changeImages(ArrayList<ImageView> img) {
-		Queue<ImageView> q=new Queue<>();
-		for(ImageView a : img) {
-			q.offer(a);
+	/**
+	 * Changes the image of all the elements on the ArrayList that comes
+	 * as a parameter 
+	 * @param img -> the ArrayList with the elements which images will be changed
+	 * 				to the BombedPoint state
+	 */
+	public void changeImages(ArrayList<ImageView> img) throws UnselectedPointException{
+		if( (bomber1==false && bomber2==false) || (bomber1==false && bomber2==true) || (bomber1==true && bomber2==false) ) {
+			throw new UnselectedPointException();
+		}else {
+			Queue<ImageView> q=new Queue<>();
+			for(ImageView a : img) {
+				q.offer(a);
+			}
+			ImageThread t2=new ImageThread(q, BOMBED_POINT);
+			t2.start();
+			if(musicThread.isAlive()) {
+				
+			}else if(musicThread.isOn()) {
+				musicThread.start();
+			}
 		}
-		Hilo2 hilo2=new Hilo2(q);
-		hilo2.start();
-		playMusic();
 	}
 	
-	public void playMusic() {
-		hilo.start();
-	}
-	
+	/**
+	 * Changes the image of an image view object when this is clicked by the user
+	 * can change it to StartBoming or EndBombing
+	 * @param img -> the imageView object which image will be changed
+	 */
 	public void changeImages(ImageView img) {
 		if(bomber1 && bomber2) {
-			System.out.println("Solo 2 puntos");
-		}else if(bomber1) {
+			Alert exception=new Alert(AlertType.ERROR);
+			exception.setContentText("You can only select two points\n One for the starting point and the other for the end point");
+			exception.setHeaderText(null);
+			exception.setTitle("Missclick (?)");
+			exception.showAndWait();
+		}else if(bomber1==false && bomber2==false) {
+			bomber1=true;
+			img.setOnMouseClicked(e->nothingMethod());
+			img.setImage(START_BOMBING);
+			for(int i=0;i<imgs.size();i++) {
+				if(imgs.get(i).getKey().getId().equalsIgnoreCase(img.getId())) {
+					imgs.get(i).getKey().setImage(START_BOMBING);
+					imgs.get(i).setValue(true);
+					imgs.get(i).setOrder(1);
+				}
+			}
+		}else if(bomber1==true && bomber2==false) {
 			bomber2=true;
+			img.setOnMouseClicked(e->nothingMethod());
+			img.setImage(END_BOMBING);
 			for(int i=0;i<imgs.size();i++) {
 				if(imgs.get(i).getKey().getId().equalsIgnoreCase(img.getId())) {
 					imgs.get(i).getKey().setImage(END_BOMBING);
@@ -218,20 +255,13 @@ public class SampleController {
 				}
 			}
 			drawPath();
-		}else {
-			for(int i=0;i<imgs.size();i++) {
-				if(imgs.get(i).getKey().getId().equalsIgnoreCase(img.getId())) {
-					imgs.get(i).getKey().setImage(START_BOMBING);
-					imgs.get(i).setValue(true);
-					imgs.get(i).setOrder(1);
-				}
-			}
-			img.setOnMouseClicked(e->nothingMethod());
-			bomber1=true;
-			img.setImage(START_BOMBING);
 		}
 	}
 	
+	/**
+	 * Filters over the points recived from the model graph
+	 * then it passes that information to the method drawPath(ArrayList<Vertex<BombingPoint>>)
+	 */
 	public void drawPath() {
 		ImageView point1=null;
 		ImageView point2=null;
@@ -250,6 +280,12 @@ public class SampleController {
 		drawPath(b);
 	}
 	
+	
+	/**
+	 * Draws the path from a starting point to an ending one
+	 * @param arr ArrayList that contains the visit order of the graph in the model
+	 * 				so it can be drawed over the GUI
+	 */
 	public void drawPath(ArrayList<Vertex<BombingPoint>> arr) {
 		marked=new ArrayList<ImageView>();
 		for(int i=0;i<arr.size();i++) {
@@ -268,89 +304,32 @@ public class SampleController {
 		}
 	}
 	
+	/**
+	 * A method that does nothing
+	 */
 	public void nothingMethod() {
 		
 	}
 	
+	/**
+	 * Gets the minimum span tree from the model to draw it over the GUI
+	 */
 	public void bombEverything() {
+		bomber1=true;
+		bomber2=true;
 		int[] ax=Main.getWar().gethPathPrim();
-		ArrayList<ImageView> path=new ArrayList<>();
+		marked=new ArrayList<>();
 		for(int i=1;i<ax.length;i++) {
-			path.add(imgs.get(ax[i]).getKey());
+			marked.add(imgs.get(ax[i]).getKey());
 		}
-		for(int i=1;i<path.size();i++) {
+		for(int i=1;i<marked.size();i++) {
 			Line line=new Line();
 			line.setStyle("-fx-stroke-dash-array: 2 12 12 2;");
-			line.setStartX(path.get(i-1).getLayoutX());	line.setStartY(path.get(i-1).getLayoutY());
-			line.setEndX(path.get(i).getLayoutX());	line.setEndY(path.get(i).getLayoutY());
+			line.setStartX(marked.get(i-1).getLayoutX());	line.setStartY(marked.get(i-1).getLayoutY());
+			line.setEndX(marked.get(i).getLayoutX());	line.setEndY(marked.get(i).getLayoutY());
 			Main.getRoot().getChildren().add(line);
 		}
 	}
 	
-	public double MCD(double dx, double dy) {
-		double res=0;
-		do{
-			res=dy;
-			dy=dx%dy;
-			dx=res;
-		}while(dy!=0);
-		return res;
-	}
-	
-//	public void b
-	
-//	public void moveAirPlane(ArrayList<ImageView> marked) {
-//		for(int i=1;i<marked.size();i++) {
-//			ImageView imgP1=marked.get(i-1);
-//			ImageView imgP2=marked.get(i);
-//			airPlane.setLayoutX(imgP1.getLayoutX());
-//			airPlane.setLayoutY(imgP1.getLayoutY());
-//			airPlane.setVisible(true);
-//			System.out.println("de "+imgP1.getId()+" a "+imgP2.getId());
-//			dx=(imgP2.getLayoutX()-imgP1.getLayoutX());
-//			dy=(imgP2.getLayoutY()-imgP1.getLayoutY());
-//			double change=MCD(dx,dy);
-//			dx=Math.abs(dx/change);
-//			dy=Math.abs(dy/change);
-//			moveAirPlane(imgP2);
-//		}
-//	}
-//	
-//	public void moveAirPlane(ImageView imgP2){
-//		animation = new Timeline(new KeyFrame(Duration.millis(100), f-> {
-//			System.out.println(imgP2.getId());
-//			if(airPlane.getLayoutX()<imgP2.getLayoutX()) {
-//				airPlane.setLayoutX(airPlane.getLayoutX()+dx);
-//			}
-//			if(airPlane.getLayoutX()>imgP2.getLayoutX()) {
-//				airPlane.setLayoutX(airPlane.getLayoutX()-dx);
-//			}
-//			
-//			if(airPlane.getLayoutY()<imgP2.getLayoutY()) {
-//				airPlane.setLayoutY(airPlane.getLayoutY()+dy);
-//			}
-//			if(airPlane.getLayoutY()>imgP2.getLayoutY()) {
-//				airPlane.setLayoutY(airPlane.getLayoutX()-dy);
-//			}
-//		}));
-//		animation.setCycleCount(Timeline.INDEFINITE);
-//		animation.play();
-//	}
-	
-	public boolean isBomber1() {
-		return bomber1;
-	}
-
-	public void setBomber1(boolean bomber1) {
-		this.bomber1 = bomber1;
-	}
-
-	public boolean isBomber2() {
-		return bomber2;
-	}
-
-	public void setBomber2(boolean bomber2) {
-		this.bomber2 = bomber2;
-	}
 	
 }

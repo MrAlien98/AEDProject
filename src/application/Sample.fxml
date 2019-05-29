@@ -154,9 +154,9 @@
                </image>
             </ImageView>
             <Label layoutX="48.0" layoutY="82.0" text="Bombed Point" textFill="WHITE" />
-            <ImageView fx:id="airPlane" fitHeight="24.0" fitWidth="24.0" layoutX="463.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgVolume" fitHeight="25.0" fitWidth="30.0" layoutX="1240.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/plane1.png" />
+                  <Image url="@../images/vol_on.png" />
                </image>
             </ImageView>
          </children>
@@ -165,9 +165,9 @@
    <bottom>
       <AnchorPane prefHeight="51.0" prefWidth="1323.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="butClear" layoutX="58.0" layoutY="13.0" mnemonicParsing="false" text="Clear Points" />
-            <Button fx:id="bombEverything" layoutX="199.0" layoutY="13.0" mnemonicParsing="false" text="Bomb Everything" />
-            <Button fx:id="startBombing" layoutX="352.0" layoutY="13.0" mnemonicParsing="false" text="Start Bombing" />
+            <Button fx:id="butClear" layoutX="363.0" layoutY="12.0" mnemonicParsing="false" text="Clear Points" />
+            <Button fx:id="bombEverything" layoutX="629.0" layoutY="12.0" mnemonicParsing="false" text="Bomb Everything" />
+            <Button fx:id="startBombing" layoutX="916.0" layoutY="11.0" mnemonicParsing="false" text="Start Bombing" />
          </children>
       </AnchorPane>
    </bottom>
